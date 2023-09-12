@@ -4,6 +4,7 @@ import LoginRequest from "../model/LoginRequest";
 import useHttp from "../hooks/useHttp";
 import LoginResponse from "../model/LoginResponse";
 import { validateEmail, validatePassword } from "../util/validation";
+import { useLoggedUserInformation } from "../hooks/useLoggedUserInformation";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ const LoginForm = () => {
     }
 
     if(loginResponse.message === "Successfully!"){
-      console.log(loginResponse)
+      localStorage.setItem('loginResponse', JSON.stringify(loginResponse))
     }
   };
 

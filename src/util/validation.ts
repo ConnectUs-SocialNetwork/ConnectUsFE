@@ -1,4 +1,7 @@
 export const validateEmail = (email: string) => {
+    if(email === ""){
+        return "Email field can't be empty!"
+    }
     const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
     if (emailRegex.test(email)) {
       return '';
@@ -9,6 +12,10 @@ export const validateEmail = (email: string) => {
   
   // Funkcija za naprednu validaciju lozinke
   export const validatePassword = (password: string) => {
+    if(password === ""){
+        return "Password field can't be empty!"
+    }
+
     if (password.length < 8) {
       return "Password is too short. It must be at least 8 characters long.";
     }
@@ -38,4 +45,20 @@ export const validateEmail = (email: string) => {
     }
   
     return '';
+  }
+
+  function validateName(name: string): string {
+    // Proveravamo da li je uneseno ime prazan string ili undefined/null
+    if (!name || name.trim() === "") {
+      return "Please enter a name.";
+    }
+  
+    // Proveravamo da li prvo slovo (indeks 0) je veliko slovo
+    const firstChar = name.charAt(0);
+    if (firstChar !== firstChar.toUpperCase()) {
+      return "Name should start with a capital letter.";
+    }
+  
+    // Ako je sve u redu, vraćamo prazan string (nema greške)
+    return "";
   }

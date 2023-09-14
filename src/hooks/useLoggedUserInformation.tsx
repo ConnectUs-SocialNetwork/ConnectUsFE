@@ -1,4 +1,4 @@
-import LoginResponse from "../model/LoginResponse";
+import LoginResponse from "../model/response/LoginResponse";
 
 export function useLoggedUserInformation(): LoginResponse | null {
     try {

@@ -43,7 +43,7 @@
 }
 
 /* Stil za <p> tagove sa errorima */
-.container p {
+.error {
   color: red; /* Postavite crvenu boju za tekst unutar <p> tagova */
   font-family: sans-serif;
   font-size: 14px;
@@ -70,4 +70,10 @@
   background-color: #004a9a;
   outline: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.signup{
+  font-family: sans-serif;
+  font-size: 14px;
+  text-align: center;
 }

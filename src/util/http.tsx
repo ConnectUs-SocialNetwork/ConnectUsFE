@@ -1,5 +1,5 @@
 import { QueryClient } from '@tanstack/react-query';
-import LoginData from '../model/LoginRequest';
+import LoginData from '../model/request/LoginRequest';
 
 export const queryClient = new QueryClient();
 

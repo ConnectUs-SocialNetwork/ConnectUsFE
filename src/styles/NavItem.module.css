@@ -1,0 +1,39 @@
+/* CSS fajl za stilizaciju */
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #888; /* Siva boja za tekst */
+    position: relative;
+  }
+  
+  .nav-link:hover {
+    color: #555; /* Boja teksta kada se postavi miš preko stavke */
+  }
+  
+  .nav-icon {
+    font-size: 20px; /* Prilagodite veličinu ikonice prema potrebama */
+    color: #888; /* Siva boja za ikonicu */
+  }
+  
+  .nav-text {
+    margin-top: 4px; /* Odmak između ikonice i teksta */
+    text-align: center;
+    font-size: 12px; /* Prilagodite veličinu teksta prema potrebama */
+    font-weight: bold; /* Debljina teksta */
+    text-decoration: none;
+    color: #888; /* Siva boja za tekst */
+    font-family: sans-serif;
+  }
+  
+  .nav-link:hover .nav-icon  {
+    color: #555; /* Boja ikonice kada se postavi miš preko stavke */
+  }
+
+  .nav-link:hover .nav-text  {
+    color: #555; /* Boja ikonice kada se postavi miš preko stavke */
+  }
+
+

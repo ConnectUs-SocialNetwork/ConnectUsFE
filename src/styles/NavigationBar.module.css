@@ -1,0 +1,25 @@
+.ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  align-items: center; /* Poravnajte elemente vertikalno */
+}
+
+.navItem {
+  display: inline-block;
+  border-right: 1px solid #ccc;
+  padding-right: 20px;
+  line-height: 2px;
+  margin-right: 20px;
+}
+
+.navItem:last-child {
+  border-right: none;
+  margin-right: 0;
+}
+
+.img {
+  width: 100px;
+  height: 40px;
+  margin-left: 70px;
+}

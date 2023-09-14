@@ -1,10 +1,10 @@
 import classes from "../styles/LoginForm.module.css";
 import { useState } from "react";
-import LoginRequest from "../model/LoginRequest";
+import LoginRequest from "../model/request/LoginRequest";
 import useHttp from "../hooks/useHttp";
-import LoginResponse from "../model/LoginResponse";
+import LoginResponse from "../model/response/LoginResponse";
 import { validateEmail, validatePassword } from "../util/validation";
-import { useLoggedUserInformation } from "../hooks/useLoggedUserInformation";
+import { Link } from 'react-router-dom'
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -67,9 +67,8 @@ const LoginForm = () => {
             onChange={(event) => {
               setEmail(event.target.value);
             }}
-            required
           />
-          <p>{emailError}</p>
+          <p className={classes.error}>{emailError}</p>
         </div>
         <div>
           <label htmlFor="image">Password</label>
@@ -80,12 +79,14 @@ const LoginForm = () => {
             onChange={(event) => {
               setPassword(event.target.value);
             }}
-            required
           />
-          <p>{passwordError}</p>
+          <p className={classes.error}>{passwordError}</p>
         </div>
         <div>
           <button type="submit" disabled={isLoading}>{isLoading ? 'Signing in...' : 'Sign in'}</button>
+        </div>
+        <div>
+          <p className={classes.signup}>New to ConnectUs? <Link to="/auth?mode=signup">Sign up</Link></p>
         </div>
       </form>
     </div>

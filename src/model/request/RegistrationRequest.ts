@@ -3,16 +3,16 @@ export class RegistrationRequest {
   password: string;
   firstname: string;
   lastname: string;
-  dateOfBirth: Date;
-  gender: Gender;
+  dateOfBirth: string;
+  gender: string;
 
   constructor(
     email: string,
     password: string,
     firstname: string,
     lastname: string,
-    dateOfBirth: Date,
-    gender: Gender
+    dateOfBirth: string,
+    gender: string
   ) {
     this.email = email;
     this.password = password;
@@ -21,9 +21,4 @@ export class RegistrationRequest {
     this.dateOfBirth = dateOfBirth;
     this.gender = gender;
   }
-}
-
-enum Gender {
-  MALE = "MALE",
-  FEMALE = "FEMALE",
 }

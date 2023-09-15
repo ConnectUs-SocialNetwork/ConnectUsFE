@@ -12,7 +12,7 @@ const NavBar = () => {
     <nav>
       <ul className={classes.ul}>
         <li className={classes.navItem}>
-          <img src="src\assets\Logi.png" />
+          <img src="src\assets\Logo.png" />
         </li>
         <li className={classes.navItem}>
           <SearchBar />

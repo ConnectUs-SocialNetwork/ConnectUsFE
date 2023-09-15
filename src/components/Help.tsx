@@ -1,7 +1,5 @@
-import NavBar from "./NavigationBar";
-
 const Help = () => {
-    return <NavBar />
+    return <></>
 }
 
 export default Help;

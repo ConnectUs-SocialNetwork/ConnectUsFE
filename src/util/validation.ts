@@ -47,16 +47,32 @@ export const validateEmail = (email: string) => {
     return '';
   }
 
-  function validateName(name: string): string {
+  export function validateName(name: string): string {
     // Proveravamo da li je uneseno ime prazan string ili undefined/null
     if (!name || name.trim() === "") {
-      return "Please enter a name.";
+      return "Name field can't be empty.";
     }
   
     // Proveravamo da li prvo slovo (indeks 0) je veliko slovo
     const firstChar = name.charAt(0);
     if (firstChar !== firstChar.toUpperCase()) {
       return "Name should start with a capital letter.";
+    }
+  
+    // Ako je sve u redu, vraćamo prazan string (nema greške)
+    return "";
+  }
+
+  export function validateLastname(name: string): string {
+    // Proveravamo da li je uneseno ime prazan string ili undefined/null
+    if (!name || name.trim() === "") {
+      return "Lastname field can't be empty.";
+    }
+  
+    // Proveravamo da li prvo slovo (indeks 0) je veliko slovo
+    const firstChar = name.charAt(0);
+    if (firstChar !== firstChar.toUpperCase()) {
+      return "Lastname should start with a capital letter.";
     }
   
     // Ako je sve u redu, vraćamo prazan string (nema greške)

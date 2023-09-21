@@ -1,5 +1,10 @@
+import AvatarAndFullName from "./Feed/AvatarAndFullName";
+import PostComponent from "./Feed/Post";
+
 const Help = () => {
-    return <></>
+    return <>
+            <PostComponent />
+        </>
 }
 
 export default Help;

@@ -1,0 +1,18 @@
+.textContainer{
+  margin-left: 15px;
+}
+
+.p {
+  height: 100px;
+  width: 100px;
+}
+
+.label {
+  margin-left: 10px;
+  color: rgb(67, 67, 67);
+}
+
+.label:hover {
+  border-bottom: 1px solid;
+  cursor: pointer;
+}

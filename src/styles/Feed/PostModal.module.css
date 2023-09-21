@@ -1,0 +1,144 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  position: fixed;
+  top: 50px;
+  left: 10%;
+  width: 80%;
+  z-index: 100;
+  overflow: hidden;
+  margin-top: 50px;
+}
+
+.header {
+  background: white;
+  height: 70px;
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+.content {
+  width: 640px;
+  height: 300px;
+  background-color: white;
+}
+
+.postText {
+  border: none;
+  width: 615px;
+  height: 175px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  vertical-align: top;
+  font-size: 18px;
+  font-family: sans-serif;
+  resize: none;
+  outline: none;
+}
+
+.postText:hover {
+  border: 0px;
+  box-shadow: none;
+  border-color: #e1e0e0;
+}
+
+
+@media (min-width: 768px) {
+  .modal {
+    left: calc(50% - 20rem);
+    width: 40rem;
+  }
+}
+
+.avatar-container{
+  display: flex;
+  background-color: white;
+  width: 50%;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Zaobljeni avatar */
+}
+
+.p{
+  margin-left: 15px;
+  margin-top: 15px;
+  font-size: 17px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+/* ... ostali stilovi */
+
+.actions {
+  display: flex; /* Postavite kontejner za akcije da koristi fleksibilni prikaz */
+  justify-content: flex-start; /* Postavite da se elementi poravnavaju s leve strane */
+  align-items: center; /* Centralizujte vertikalno u kontejneru */
+  background-color: white;
+  padding: 10px; /* Dodajte malo razmaka oko sadržaja */
+}
+
+.fileInputContainer {
+  flex: 1; /* Rastegnite ovaj deo da zauzme preostali prostor */
+  display: flex;
+  align-items: center;
+}
+
+.fileInputButton {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: sans-serif;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: rgb(82, 82, 241);
+  color: white;
+  cursor: pointer;
+}
+
+.fileInputButton:hover {
+  background-color: rgb(49, 49, 222);
+}
+
+.fileInputLabel {
+  margin-right: 10px; /* Dodajte malo razmaka između teksta i dugmeta */
+  margin-bottom: 10px;
+}
+
+.button {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: sans-serif;
+  margin-bottom: 10px;
+  border: none;
+  background-color: rgb(82, 82, 241);
+  color: white;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(49, 49, 222);
+}
+
+.button:disabled{
+  cursor: auto;
+  background-color: rgb(184, 183, 183);
+}
+
+

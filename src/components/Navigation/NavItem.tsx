@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { NavLink } from 'react-router-dom';
-import classes from '../styles/NavItem.module.css'; 
+import classes from '../../styles/Navigation/NavItem.module.css'; 
 
 interface NavItemProps {
   iconType: IconDefinition; // FontAwesome ikona

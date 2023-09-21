@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import classes from "../styles/SignUpForm.module.css";
+import classes from "../../styles/Authentication/SignUpForm.module.css";
 import {
   validateEmail,
   validateLastname,
   validateName,
   validatePassword,
-} from "../util/validation";
-import useHttp from "../hooks/useHttp";
-import RegistrationResponse from "../model/response/RegistrationResponse";
+} from "../../util/validation";
+import useHttp from "../../hooks/useHttp";
+import RegistrationResponse from "../../model/response/RegistrationResponse";
 import { useNavigate } from "react-router-dom";
-import { RegistrationRequest } from "../model/request/RegistrationRequest";
+import { RegistrationRequest } from "../../model/request/RegistrationRequest";
 
 const SignupFrom = () => {
   const [email, setEmail] = useState("");

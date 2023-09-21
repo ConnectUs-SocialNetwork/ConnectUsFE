@@ -3,7 +3,7 @@ import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import classes from "../styles/NavigationBar.module.css";
+import classes from "../../styles/Navigation/NavigationBar.module.css";
 import NavItem from "./NavItem";
 import SearchBar from "./SearchBar";
 

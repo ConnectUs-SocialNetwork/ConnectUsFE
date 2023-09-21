@@ -1,0 +1,9 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 240, 240);
+    width: 100%;
+}
+
+.mainContainer{}

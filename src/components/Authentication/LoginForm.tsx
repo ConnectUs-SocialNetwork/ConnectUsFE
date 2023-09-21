@@ -1,9 +1,9 @@
-import classes from "../styles/LoginForm.module.css";
+import classes from "../../styles/Authentication/LoginForm.module.css";
 import { useState } from "react";
-import LoginRequest from "../model/request/LoginRequest";
-import useHttp from "../hooks/useHttp";
-import LoginResponse from "../model/response/LoginResponse";
-import { validateEmail, validatePassword } from "../util/validation";
+import LoginRequest from "../../model/request/LoginRequest";
+import useHttp from "../../hooks/useHttp";
+import LoginResponse from "../../model/response/LoginResponse";
+import { validateEmail, validatePassword } from "../../util/validation";
 import { Link } from 'react-router-dom'
 
 const LoginForm = () => {

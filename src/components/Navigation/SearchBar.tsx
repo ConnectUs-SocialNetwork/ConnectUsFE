@@ -1,4 +1,4 @@
-import classes from "../styles/SearchBar.module.css";
+import classes from "../../styles/Navigation/SearchBar.module.css";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

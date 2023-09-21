@@ -1,0 +1,11 @@
+.time-popup {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8); /* Crna pozadina sa 80% prozirnosti */
+  color: white; /* Bijela boja teksta */
+  border: 1px solid #fff; /* Dodajte beli okvir ako je potrebno */
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 13px;
+  z-index: 999; /* Postavite z-index kako biste ga postavili iznad drugih elemenata */
+  font-family: sans-serif;
+}

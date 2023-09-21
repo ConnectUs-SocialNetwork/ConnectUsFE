@@ -5,6 +5,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import Root from "./pages/Root.js";
 import Help from "./components/Help.js";
 import Home from "./pages/Home.js";
+import Feed from "./pages/Feed.js";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Feed />
       },
       {
         path: "/my-network",
@@ -36,6 +37,8 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  console.log("Render iz App komponente");
+
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />

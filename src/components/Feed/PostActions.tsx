@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import StyledButton from "../UI/StyledButton";
 import classes from '../../styles/Feed/PostActions.module.css'
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
@@ -9,31 +9,51 @@ import useHttp from '../../hooks/useHttp';
 
 interface PostActionsProps{
     postId: number;
+    liked: boolean;
 }
 
-const PostActions:React.FC<PostActionsProps> = ({postId}) => {
+const PostActions:React.FC<PostActionsProps> = ({postId, liked}) => {
+    const [isLiked, setIsLiked] = useState(liked)
     const userInformation = useLoggedUserInformation();
-    const { isLoading, sendRequest: sendLikeRequest } = useHttp();
+    const { sendRequest: sendLikeRequest } = useHttp();
+    const { sendRequest: sendUnlikeRequest } = useHttp();
 
-    const applyLikeData = () => {}
+    const applyLikeData = () => {
+        console.log("like")
+        setIsLiked(!isLiked)
+    }
 
     const likeRequest = () => {
-        sendLikeRequest(
-            {
-              url: "http://localhost:8081/api/v1/post/like?userId=" + userInformation?.user.id + "&postId=" + postId,
-              method: "POST",
-              headers: {
-                'Content-Type': 'application/json',
-              }
-            },
-            applyLikeData
-          );
+        if(isLiked){
+            sendUnlikeRequest(
+                {
+                    url: "http://localhost:8081/api/v1/post/unlike?userId=" + userInformation?.user.id + "&postId=" + postId,
+                    method: "POST",
+                    headers: {
+                      'Content-Type': 'application/json',
+                    }
+                  },
+                  applyLikeData
+            )
+        }else{
+            sendLikeRequest(
+                {
+                  url: "http://localhost:8081/api/v1/post/like?userId=" + userInformation?.user.id + "&postId=" + postId,
+                  method: "POST",
+                  headers: {
+                    'Content-Type': 'application/json',
+                  }
+                },
+                applyLikeData
+              );
+        }
+        
     
     }
     return <div className={classes.actionsContainer}>
-        <StyledButton iconType={faThumbsUp} text="Like" color="blue" onClick={() => {}} />
-        <StyledButton iconType={faComment} text="Comment" color="grey" onClick={() => {}} />
-        <StyledButton iconType={faShare} text="Share" color="grey" onClick={() => {}} /> 
+        <StyledButton iconType={faThumbsUp} text="Like" color={isLiked ? 'blue' : 'gray'} onClick={likeRequest} textColor={isLiked ? 'blue' : 'gray'}/>
+        <StyledButton iconType={faComment} text="Comment" color="grey" onClick={() => {}} textColor='gray'/>
+        <StyledButton iconType={faShare} text="Share" color="grey" onClick={() => {}} textColor='gray' /> 
     </div>
 }
 

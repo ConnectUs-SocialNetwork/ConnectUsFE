@@ -6,15 +6,17 @@ interface StyledButtonProps {
   iconType: IconDefinition;
   text: string;
   color: string;
+  textColor: string;
   onClick: (data: any) => void;
 }
 
 const StyledButton: React.FC<StyledButtonProps> = (props) => {
+
   return (
     <>
       <button className={classes.button} onClick={props.onClick}>
         <FontAwesomeIcon icon={props.iconType} size="xl" color={props.color} className={classes.icon}/>
-        <p className={classes.p}>{props.text}</p>
+        <p className={classes.p} style={{color: props.textColor}}>{props.text}</p>
       </button>
     </>
   );

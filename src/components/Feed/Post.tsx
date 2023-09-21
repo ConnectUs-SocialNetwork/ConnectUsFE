@@ -16,7 +16,7 @@ const PostComponent: React.FC<PostProps> = ({ post }) => {
       <AvatarAndFullName time={post.dateAndTime}/>
       <PostText text={post.text} />
       <PostImage imageSrc={post.imageInBase64} altText="slika" />
-      <PostActions postId={post.id}/>
+      <PostActions postId={post.id} liked={post.liked}/>
     </div>
   );
 };

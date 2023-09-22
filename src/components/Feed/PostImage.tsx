@@ -9,7 +9,6 @@ interface PostImageProps {
 const PostImage: React.FC<PostImageProps> = ({ imageSrc, altText }) => {
 
   const imageInBase64 = 'data:image/jpeg;base64,' + imageSrc;
-  console.log(imageInBase64)
 
   return (
     <div className={classes.imageContainer}>

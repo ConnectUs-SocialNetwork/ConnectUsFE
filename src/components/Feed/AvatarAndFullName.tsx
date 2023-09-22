@@ -18,7 +18,7 @@ const AvatarAndFullName:React.FC<PropsData> = ({time}) => {
   const parsedDateTime = new Date(formattedDateTimeFromServer);
 
   let timeAgo = calculateTimeAgo1(parsedDateTime);
-  const formattedDate = formatDate("2023-09-19T12:30:00");
+  const formattedDate = formatDate(time);
 
   return (
     <div className={classes["avatar-container"]}>

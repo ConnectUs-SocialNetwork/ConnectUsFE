@@ -1,5 +1,48 @@
-.actionsContainer{
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
+.actionsContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
 }
+
+.likesAndCommentsContainer {
+  display: flex;
+  height: 25px;
+  margin-bottom: 15px;
+}
+
+.likes {
+  text-align: left;
+  width: 50%;
+}
+
+.likesText {
+  font-family: sans-serif;
+  margin-left: 15px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  width: 50px;
+}
+
+.likesText:hover {
+  cursor: pointer;
+  text-decoration: underline; /* Dodajte liniju ispod lajkova na hover */
+  color: blue;
+}
+
+.comments {
+  text-align: right;
+  width: 50%;
+}
+
+.commentText {
+  font-family: sans-serif;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.comments:hover {
+    cursor: pointer;
+    text-decoration: underline; /* Dodajte liniju ispod lajkova na hover */
+    color: blue;
+  }

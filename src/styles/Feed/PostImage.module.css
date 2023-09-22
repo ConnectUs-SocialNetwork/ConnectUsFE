@@ -3,11 +3,10 @@
     width: 600px; /* Širina okvira diva */
     height: 400px; /* Visina okvira diva */
     overflow: hidden; /* Skrivanje dijelova slike koji izlaze iz okvira */
-    margin-bottom: 20px;
   }
   
   .postImage {
-    width: 590px; /* Postavite širinu slike na 100% kako biste je razvukli na širinu okvira */
-    height: 400px; /* Automatski prilagodite visinu slike */
+    max-width: 590px;
+    max-height: 400px;
   }
   

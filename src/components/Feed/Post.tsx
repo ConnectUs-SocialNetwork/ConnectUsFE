@@ -11,12 +11,13 @@ interface PostProps {
 }
 
 const PostComponent: React.FC<PostProps> = ({ post }) => { 
+
   return (
     <div className={classes.postContainer}>
       <AvatarAndFullName time={post.dateAndTime}/>
       <PostText text={post.text} />
       <PostImage imageSrc={post.imageInBase64} altText="slika" />
-      <PostActions postId={post.id} liked={post.liked}/>
+      <PostActions postId={post.id} liked={post.liked} likes={post.likes}/>
     </div>
   );
 };

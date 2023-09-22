@@ -1,9 +1,11 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import CreatePost from "../components/Feed/CreatePost";
 import useHttp from "../hooks/useHttp";
 import Posts from "../model/response/PostsResponse";
 import PostsComponent from "../components/Feed/PostsComponent";
 import { useLoggedUserInformation } from "../hooks/useLoggedUserInformation";
+import LoadingPage from "./LoadingPage";
+import { sortPostsByDate } from "../util/helperFuntions";
 
 const Feed = () => {
   const [posts, setPosts] = useState<Posts>(new Posts([]));
@@ -40,8 +42,13 @@ const Feed = () => {
 
   return (
     <>
-      <CreatePost />
-      <PostsComponent posts={posts!} />
+      {isLoading && <LoadingPage />}
+      {!isLoading && (
+        <>
+          <CreatePost />
+          <PostsComponent posts={posts!} />
+        </>
+      )}
     </>
   );
 };

@@ -1,3 +1,6 @@
+import Post from "../model/response/Post";
+import Posts from "../model/response/PostsResponse";
+
 export function imageToBase64(imageFile: File): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
@@ -103,4 +106,17 @@ export function convertImageToBase64(image: File): string {
       reader.readAsDataURL(image);
     }
     return '';
+}
+
+export function sortPostsByDate(posts: Posts): Posts {
+  const sortedPosts = [...posts.posts]; // Stvaranje kopije niza postova
+
+  sortedPosts.sort((postA: Post, postB: Post) => {
+    const dateA = new Date(postA.dateAndTime); // Pretvaranje datuma iz stringa natrag u Date objekt
+    const dateB = new Date(postB.dateAndTime);
+    
+    return dateA.getTime() - dateB.getTime(); // Sortiranje po vremenu
+  });
+
+  return new Posts(sortedPosts); // Vraćanje sortiranih postova u novom objektu tipa Posts
 }

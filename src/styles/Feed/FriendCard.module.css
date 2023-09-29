@@ -1,0 +1,21 @@
+.friendCardContainer{
+    display: flex;
+    border-bottom: 1px solid rgb(182, 182, 182);
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Zaobljeni avatar */
+  }
+
+.nameAndSurname{
+    margin-left: 10px;
+    font-family: sans-serif;
+    margin-top: 15px;
+}
+
+.avatarAndName{
+    display: flex;
+    width: 50%;
+}

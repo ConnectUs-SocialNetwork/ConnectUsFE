@@ -31,11 +31,11 @@ const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
   const [isDisabled, setIsDisabled] = useState(true);
 
   const userInformation: LoginResponse = useLoggedUserInformation()!;
-  const fileInputRef = useRef<HTMLInputElement>(null); // Dodajte tip input elementa ovde
+  const fileInputRef = useRef<HTMLInputElement>(null); 
 
   useEffect(() => {
     if (props.type === "Media" && fileInputRef.current) {
-      fileInputRef.current.click(); // Kliknite na skriveni input element
+      fileInputRef.current.click(); 
     }
   }, []);
 
@@ -53,7 +53,7 @@ const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
 
   const handleButtonClick = () => {
     if (fileInputRef.current) {
-      fileInputRef.current.click(); // Kliknite na skriveni input element
+      fileInputRef.current.click(); 
     }
   };
 
@@ -65,21 +65,7 @@ const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
       setIsDisabled(true);
     }
   };
-
-  /*const handleCreatePost = () => {
-    if(selectedImage !== null){
-      imageToBase64(selectedImage).then((base64Image) => {
-        console.log('Base64 slika:', base64Image);
-        let postData = new PostRequest(userInformation.user.email, base64Image, postText)
-        props.onConfirm(postData)
-      });
-      
-    }else{
-      let imageInBase64 = '';
-      let postData = new PostRequest(userInformation.user.email, imageInBase64, postText)
-      props.onConfirm(postData)
-    }
-  }*/
+  
   const handleCreatePost = () => {
     if (selectedImage) {
       const reader = new FileReader();

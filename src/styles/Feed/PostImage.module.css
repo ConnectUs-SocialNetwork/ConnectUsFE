@@ -1,12 +1,11 @@
 /* PostImage.module.css */
 .imageContainer {
-    width: 600px; /* Širina okvira diva */
-    height: 400px; /* Visina okvira diva */
-    overflow: hidden; /* Skrivanje dijelova slike koji izlaze iz okvira */
-  }
-  
-  .postImage {
-    max-width: 590px;
-    max-height: 400px;
-  }
-  
+  width: 600px; /* Širina okvira diva */
+  height: 400px; /* Visina okvira diva */
+  overflow: hidden; /* Skrivanje dijelova slike koji izlaze iz okvira */
+}
+
+.postImage {
+  max-width: 590px;
+  max-height: 400px;
+}

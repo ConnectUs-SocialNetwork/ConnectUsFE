@@ -5,6 +5,7 @@ export default class UserResponse {
   email: string;
   dateOfBirth: Date;
   gender: string;
+  profileImage: string;
 
   constructor(
     id: number,
@@ -12,7 +13,8 @@ export default class UserResponse {
     lastname: string,
     email: string,
     dateOfBirth: Date,
-    gender: string
+    gender: string,
+    image: string
   ) {
     this.id = id;
     this.firstname = firstname;
@@ -20,5 +22,6 @@ export default class UserResponse {
     this.email = email;
     this.dateOfBirth = dateOfBirth;
     this.gender = gender;
+    this.profileImage = image;
   }
 }

@@ -4,6 +4,9 @@
     align-items: center;
     background-color: rgb(240, 240, 240);
     width: 100%;
+    
 }
 
-.mainContainer{}
+.mainContainer{
+    min-height: 89.5vh;
+}

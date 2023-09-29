@@ -5,7 +5,8 @@ import Posts from "../model/response/PostsResponse";
 import PostsComponent from "../components/Feed/PostsComponent";
 import { useLoggedUserInformation } from "../hooks/useLoggedUserInformation";
 import LoadingPage from "./LoadingPage";
-import { sortPostsByDate } from "../util/helperFuntions";
+import Post from "../model/response/Post";
+import classes from '../styles/Pages/Feed.module.css'
 
 const Feed = () => {
   const [posts, setPosts] = useState<Posts>(new Posts([]));
@@ -30,6 +31,7 @@ const Feed = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + userInformation?.tokens.accessToken,
         },
       },
       applyData
@@ -40,12 +42,18 @@ const Feed = () => {
 
   console.log("Render iz Feed komponente");
 
+  const addPostToPostsList = (post: Post) => {
+    setPosts((prevPosts) => new Posts([post, ...prevPosts.posts]));
+  };
+
   return (
     <>
       {isLoading && <LoadingPage />}
       {!isLoading && (
         <>
-          <CreatePost />
+          <div className={classes.createPostContainer}>
+            <CreatePost onCreatePost={addPostToPostsList} />
+          </div>
           <PostsComponent posts={posts!} />
         </>
       )}

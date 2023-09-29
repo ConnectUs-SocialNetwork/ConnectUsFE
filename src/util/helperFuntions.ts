@@ -120,3 +120,18 @@ export function sortPostsByDate(posts: Posts): Posts {
 
   return new Posts(sortedPosts); // Vraćanje sortiranih postova u novom objektu tipa Posts
 }
+
+export function getCurrentDateTimeString() {
+  const now = new Date();
+  
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0'); // Dodajemo vodeće nule za mjesec
+  const day = String(now.getDate()).padStart(2, '0'); // Dodajemo vodeće nule za dan
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  
+  const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  
+  return formattedDateTime;
+}

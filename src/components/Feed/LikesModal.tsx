@@ -1,14 +1,12 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 import Card from "../UI/Card";
-import classes from "../../styles/Feed/PostModal.module.css";
-import PAV_0001 from "../../assets/PAV_0001.png";
-import LoginResponse from "../../model/response/LoginResponse";
-import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
-import * as base64 from "base64-js";
+import classes from "../../styles/Feed/LikesModal.module.css";
 import PostRequest from "../../model/request/PostRequest";
 import UserResponse from "../../model/response/UserResponse";
+import FriendCard from "./FriendCard";
+import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 
 interface BackdropProps {
   onConfirm: () => void;
@@ -23,12 +21,15 @@ interface ModalOverlayProps {
 }
 
 const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
+  const user = useLoggedUserInformation()
   return (
     <Card className={classes.modal}>
-      <header className={classes.header}>
+      <header className={classes.likesHeader}>
         <h2>Likes</h2>
       </header>
-      <div className={classes.content}></div>
+      <div className={classes.content}>
+        <FriendCard avatar="" />
+      </div>
       <div className={classes.actions}>
         {" "}
         <button>Post</button>

@@ -1,0 +1,20 @@
+.allSearchedUsersContainier{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.li:last-child{
+    margin-bottom: 0px;
+}

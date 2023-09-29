@@ -3,40 +3,49 @@ import Logo from "../../assets/Logo.png";
 import StyledButton from "../UI/StyledButton";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import React, { useState } from "react";
 import PostModal from "./PostModal";
 import useHttp from "../../hooks/useHttp";
 import PostRequest from "../../model/request/PostRequest";
+import Post from "../../model/response/Post";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
-import { imageToBase64 } from "../../util/helperFuntions";
 
 interface OpenDialogData {
   isOpen: boolean;
   type: string;
 }
 
-const CreatePost = () => {
+interface CreatePostProps{
+  onCreatePost: (post: Post) => void;
+}
+
+const CreatePost: React.FC<CreatePostProps> = ({onCreatePost}) => {
   const [dialogData, setDialogData] = useState<OpenDialogData>({
     isOpen: false,
     type: '',
   });
 
-  const { isLoading, sendRequest: savePostRequest } = useHttp(); 
-  const loggedUserInformation = useLoggedUserInformation();
+  const { sendRequest: savePostRequest } = useHttp(); 
 
   const handleSavePost = (postData: PostRequest) => {
+    const userInformation = useLoggedUserInformation()
 
     savePostRequest({
       url: "http://localhost:8081/api/v1/post/save",
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': "Bearer " + userInformation?.tokens.accessToken
       },
       body: postData
     },
-    () => {})
+    applyData)
 
     setDialogData({isOpen: false, type: ''})
+  }
+
+  const applyData = (postResponse: Post) => {
+    onCreatePost(postResponse);
   }
 
   const handleOnClose = () => {
@@ -71,12 +80,16 @@ const CreatePost = () => {
           iconType={faImage}
           onClick={() => setDialogData({isOpen: true, type: 'Media'})}
           color="blue"
+          textColor="gray"
+          className=""
         />
         <StyledButton
           text="Event"
           iconType={faCalendarDays}
           onClick={() => console.log("dusan govnar")}
           color="green"
+          textColor="gray"
+          className=""
         />
       </div>
     </div>

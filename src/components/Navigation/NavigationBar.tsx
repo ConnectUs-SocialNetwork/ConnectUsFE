@@ -5,16 +5,17 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import classes from "../../styles/Navigation/NavigationBar.module.css";
 import NavItem from "./NavItem";
-import SearchBar from "./SearchBar";
+import SearchBar from "../SearchUsers/SearchBar";
+import Logo from '../../assets/Logo.png'
 
 const NavBar = () => {
   return (
     <nav>
       <ul className={classes.ul}>
         <li className={classes.navItem}>
-          <img src="src\assets\Logo.png" />
+          <img src={Logo} />
         </li>
-        <li className={classes.navItem}>
+        <li className={classes.navItem }>
           <SearchBar />
         </li>
         <li className={classes.navItem}>

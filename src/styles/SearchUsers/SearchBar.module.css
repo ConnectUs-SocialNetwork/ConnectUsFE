@@ -33,7 +33,7 @@
   margin-right: 280px;
 }
 
-.button:hover{
+.button:hover {
   background-color: #c1bebe;
 }
 
@@ -41,4 +41,10 @@
   border: 0px;
   box-shadow: none;
   border-color: #e1e0e0;
+}
+
+.friendsContainer {
+  position: absolute; /* Postavite na absolute kako bi bili izvan diva */
+  z-index: 2; /* Postavite z-index veći od ostalog sadržaja diva */
+  overflow: visible;
 }

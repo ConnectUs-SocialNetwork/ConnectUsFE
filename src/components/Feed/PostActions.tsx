@@ -95,6 +95,7 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes }) => {
             color={isLiked ? "blue" : "gray"}
             onClick={likeRequest}
             textColor={isLiked ? "blue" : "gray"}
+            className=""
           />
           <StyledButton
             iconType={faComment}
@@ -102,6 +103,7 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes }) => {
             color="grey"
             onClick={() => {}}
             textColor="gray"
+            className=""
           />
           <StyledButton
             iconType={faShare}
@@ -109,6 +111,7 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes }) => {
             color="grey"
             onClick={() => {}}
             textColor="gray"
+            className=""
           />
         </div>
       </div>

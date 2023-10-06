@@ -81,7 +81,6 @@ const CreatePost: React.FC<CreatePostProps> = ({onCreatePost}) => {
           onClick={() => setDialogData({isOpen: true, type: 'Media'})}
           color="blue"
           textColor="gray"
-          className=""
         />
         <StyledButton
           text="Event"
@@ -89,7 +88,6 @@ const CreatePost: React.FC<CreatePostProps> = ({onCreatePost}) => {
           onClick={() => console.log("dusan govnar")}
           color="green"
           textColor="gray"
-          className=""
         />
       </div>
     </div>

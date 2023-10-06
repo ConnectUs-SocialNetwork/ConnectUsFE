@@ -1,7 +1,6 @@
 import Image from "./Image";
 import classes from '../../../../styles/Profile/Header/ProfileHeader.module.css'
 import Credentials from "./Credentials";
-import Actions from "./Actions";
 
 interface PageHeaderProps{
     name: string;
@@ -12,10 +11,10 @@ interface PageHeaderProps{
 }
 
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
+
     return <div className={classes.profileHeaderContainer}>
         <Image imageSrc={props.imageSrc}/>
-        <Credentials name={props.name} numberOfLikes={props.numberOfLikes} description={props.description}/>
-        <Actions liked={props.liked}/>
+        <Credentials name={props.name} numberOfLikes={props.numberOfLikes} description={props.description} liked={props.liked} />
     </div>
 }
 

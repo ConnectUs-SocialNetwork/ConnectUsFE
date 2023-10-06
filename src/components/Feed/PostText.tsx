@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import classes from "../../styles/Feed/PostText.module.css"; // Pravilno putanja do CSS modula
+import classes from "../../styles/Feed/PostText.module.css";
 
 interface PostTextProps {
   text: string;
@@ -24,7 +24,7 @@ const PostText: React.FC<PostTextProps> = ({ text }) => {
   return (
     <div className={classes.textContainer}>
       {showMore && !more && (
-        <p>
+        <p className={classes.p}>
           {result}
           <label
             onClick={() => {
@@ -37,7 +37,7 @@ const PostText: React.FC<PostTextProps> = ({ text }) => {
         </p>
       )}
       {showMore && more && (
-        <p>
+        <p className={classes.p}>
           {stringSaViseRedova}
           <label
             className={classes.label}

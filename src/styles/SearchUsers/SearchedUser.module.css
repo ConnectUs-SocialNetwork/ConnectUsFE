@@ -11,8 +11,8 @@
 .searchedUsersContainer{
     position: absolute;
     z-index: 10;
-    top: 3.4rem;
-    left: 17rem;
+    top: 3.1rem;
+    left: 5rem;
     height: min-content;
     width: 270px;
     background-color: white;

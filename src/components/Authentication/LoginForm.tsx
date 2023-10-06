@@ -4,7 +4,7 @@ import LoginRequest from "../../model/request/LoginRequest";
 import useHttp from "../../hooks/useHttp";
 import LoginResponse from "../../model/response/LoginResponse";
 import { validateEmail, validatePassword } from "../../util/validation";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +12,7 @@ const LoginForm = () => {
   const [emailError, setEmailError] = useState("")
   const [passwordError, setPasswordError] = useState("")
   const { isLoading, sendRequest: sendLoginRequest } = useHttp();
+  const navigate = useNavigate();
 
   const applyData = (loginResponse: LoginResponse) => {
     if(loginResponse.message === "Email or password are not correct!"){
@@ -20,6 +21,7 @@ const LoginForm = () => {
 
     if(loginResponse.message === "Successfully!"){
       localStorage.setItem('loginResponse', JSON.stringify(loginResponse))
+      navigate('/')
     }
   };
 

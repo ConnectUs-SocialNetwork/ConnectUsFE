@@ -2,7 +2,9 @@
     display: flex;
     justify-content: right;
     text-align: right;
-    width: 40%;
+    width: auto;
+    top: 0;
+    right: 0;
     margin-right: 15px;
     margin-top: 15px;
 }

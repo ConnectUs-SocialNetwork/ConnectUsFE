@@ -1,9 +1,9 @@
 .imageContainer {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover; /* Ovo će osigurati da se slika popuni na najbolji način */
-    object-position: center center; /* Ovo će postaviti centar slike na centar kontejnera */
-    margin-left: 30px;
-    border: 1px solid black
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover; /* Ovo će osigurati da se slika popuni na najbolji način */
+  object-position: center center; /* Ovo će postaviti centar slike na centar kontejnera */
+  margin-left: 30px;
+  border: 1px solid black;
 }

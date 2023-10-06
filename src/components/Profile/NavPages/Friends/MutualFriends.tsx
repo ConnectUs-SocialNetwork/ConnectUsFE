@@ -4,8 +4,10 @@ import useHttp from "../../../../hooks/useHttp";
 import { useLoggedUserInformation } from "../../../../hooks/useLoggedUserInformation";
 import AllUserFriends from "./AllUserFriends";
 import classes from "../../../../styles/Profile/NavPages/Friends/Friends.module.css";
+import { useParams } from "react-router-dom";
 
 const MutualFriends = () => {
+  const params = useParams();
     const [filteredFriends, setFilteredFriends] = useState<SearchUserResponse[]>(
         []
       );
@@ -21,8 +23,8 @@ const MutualFriends = () => {
           {
             url:
               "http://localhost:8081/api/v1/user/getUserMutualFriends" +
-              "?userId=502&" +
-              "myId=" +
+              "?userId=" + params.userId +
+              "&myId=" +
               userInformation?.user.id,
             method: "GET",
             headers: {

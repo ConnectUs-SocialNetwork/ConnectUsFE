@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import Card from "../UI/Card";
 import classes from "../../styles/Feed/PostModal.module.css";
-import PAV_0001 from "../../assets/PAV_0001.png";
+import BlankProfilePicture from "../../assets/BlankProfilePicture.png";
 import LoginResponse from "../../model/response/LoginResponse";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 import * as base64 from "base64-js";
@@ -85,6 +85,13 @@ const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
         }
       };
       reader.readAsArrayBuffer(selectedImage);
+    }else{
+      let postData = new PostRequest(
+        userInformation.user.email,
+        "",
+        postText
+      );
+      props.onConfirm(postData);
     }
   };
 
@@ -92,7 +99,7 @@ const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
     <Card className={classes.modal}>
       <header className={classes.header}>
         <div className={classes["avatar-container"]}>
-          <img src={PAV_0001} alt="User Avatar" className={classes["avatar"]} />
+          <img src={userInformation.user.profileImage === null ? BlankProfilePicture : userInformation.user.profileImage} alt="User Avatar" className={classes["avatar"]} />
           <p className={classes.p}>
             {userInformation.user.firstname} {userInformation.user.lastname}
           </p>

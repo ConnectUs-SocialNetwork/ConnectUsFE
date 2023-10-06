@@ -3,12 +3,17 @@ import AuthenticationPage from "./pages/Authentication";
 import Root from "./pages/Root.js";
 import Feed from "./pages/Feed.js";
 import AllSearchedUsersPage from "./pages/AllSearchedUsersPage.js";
-import Help from "./pages/Help.js";
 import PostsList from "./components/Profile/NavPages/Posts/PostsList.js";
 import UserProfilePage from "./pages/UserProfilePage.js";
 import Friends from "./components/Profile/NavPages/Friends/Friends.js";
 import FriendsNavPage from "./components/Profile/NavPages/Friends/FriendsNvPage.js";
 import MutualFriends from "./components/Profile/NavPages/Friends/MutualFriends.js";
+import MyProfilePage from "./pages/MyProfilePage.js";
+import MyFriends from "./components/MyProfile/NavPages/Friends/MyFriends.js";
+import MyPostsList from "./components/MyProfile/NavPages/Posts/MyPostsList.js";
+import EditProfileForm from "./components/Page/CreatePageForm.js";
+import CreatePageForm from "./components/Page/CreatePageForm.js";
+import ViewPage from "./pages/ViewPage.js";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +42,15 @@ const router = createBrowserRouter([
       },
       {
         path: "help",
-        element: <Help />
+        element: <EditProfileForm />
+      },
+      {
+        path: "createPage",
+        element: <CreatePageForm />
+      },
+      {
+        path: "viewPage/:pageId",
+        element: <ViewPage />
       },
       {
         path: "/viewUserProfile/:userId",
@@ -60,6 +73,21 @@ const router = createBrowserRouter([
                 element: <MutualFriends />
               }
             ]
+          }
+        ]
+      },
+      {
+        path: "/viewMyProfile",
+        element: <MyProfilePage />,
+        children: [
+          {
+            index: true,
+            element: <MyPostsList />
+          },
+          {
+            path: "friends",
+            element: <MyFriends />,
+            
           }
         ]
       }

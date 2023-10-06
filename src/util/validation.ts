@@ -78,3 +78,12 @@ export const validateEmail = (email: string) => {
     // Ako je sve u redu, vraćamo prazan string (nema greške)
     return "";
   }
+
+  export function validateEmptyString(text: string): string {
+    // Proveravamo da li je uneseno ime prazan string ili undefined/null
+    if (!text || text.trim() === "") {
+      return "Field can't be empty.";
+    }
+
+    return "";
+  }

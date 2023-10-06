@@ -38,6 +38,7 @@ const OneSearchedUser: React.FC<OneSearchedUserProps> = ({ user }) => {
             onClick={() => {handleViewProfile()}}
             text="View profile"
             textColor="black"
+            
           />
       </div>
     </div>

@@ -12,7 +12,7 @@ interface NavItemProps {
 
 const NavItem: React.FC<NavItemProps> = (props) => {
   return (
-    <NavLink to={props.to} className={classes['nav-link']} end={props.text === 'Home' ? true : false}>
+    <NavLink to={props.to} className={({isActive}) => isActive ? `${classes['nav-link']} ${classes.active}` : classes['nav-link']} end={props.text === 'Home' ? true : false} >
       <FontAwesomeIcon icon={props.iconType} className={classes['nav-icon']} />
       <p className={classes['nav-text']}>{props.text}</p>
     </NavLink>

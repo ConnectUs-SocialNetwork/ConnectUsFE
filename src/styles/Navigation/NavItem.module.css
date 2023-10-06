@@ -7,6 +7,8 @@
     text-decoration: none;
     color: #888; /* Siva boja za tekst */
     position: relative;
+    width: 70px;
+    margin-right: 10px;
   }
   
   .nav-link:hover {
@@ -14,7 +16,7 @@
   }
   
   .nav-icon {
-    font-size: 20px; /* Prilagodite veličinu ikonice prema potrebama */
+    font-size: 25px; /* Prilagodite veličinu ikonice prema potrebama */
     color: #888; /* Siva boja za ikonicu */
   }
   

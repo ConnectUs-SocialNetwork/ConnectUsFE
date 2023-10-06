@@ -1,5 +1,5 @@
 import classes from "../../styles/Feed/CreatePost.module.css";
-import Logo from "../../assets/Logo.png";
+import ProfileImg from "../../assets/BlankProfilePicture.png";
 import StyledButton from "../UI/StyledButton";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
@@ -20,6 +20,7 @@ interface CreatePostProps{
 }
 
 const CreatePost: React.FC<CreatePostProps> = ({onCreatePost}) => {
+  const userInformation = useLoggedUserInformation()
   const [dialogData, setDialogData] = useState<OpenDialogData>({
     isOpen: false,
     type: '',
@@ -28,7 +29,6 @@ const CreatePost: React.FC<CreatePostProps> = ({onCreatePost}) => {
   const { sendRequest: savePostRequest } = useHttp(); 
 
   const handleSavePost = (postData: PostRequest) => {
-    const userInformation = useLoggedUserInformation()
 
     savePostRequest({
       url: "http://localhost:8081/api/v1/post/save",
@@ -65,7 +65,7 @@ const CreatePost: React.FC<CreatePostProps> = ({onCreatePost}) => {
       )}
       <div className={classes["post-form-container"]}>
         <div className={classes["avatar-container"]}>
-          <img src={Logo} alt="User Avatar" className={classes["avatar"]} />
+          <img src={userInformation?.user.profileImage === null ? ProfileImg : userInformation?.user.profileImage} alt="User Avatar" className={classes["avatar"]} />
         </div>
         <button
           className={classes["open-modal-button"]}

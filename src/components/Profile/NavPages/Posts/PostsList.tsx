@@ -4,11 +4,14 @@ import PostsComponent from "../../../Feed/PostsComponent";
 import useHttp from "../../../../hooks/useHttp";
 import { useLoggedUserInformation } from "../../../../hooks/useLoggedUserInformation";
 import LoadingPage from "../../../../pages/LoadingPage";
+import { useParams } from "react-router-dom";
+
 
 const PostsList = () => {
   const [posts, setPosts] = useState<Posts>(new Posts([]));
   const { isLoading, sendRequest: sendGetPostsRequest } = useHttp();
   const userInformation = useLoggedUserInformation();
+  const params = useParams()
 
   const applyData = (posts: Posts) => {
     if (posts === undefined) {
@@ -22,7 +25,7 @@ const PostsList = () => {
     sendGetPostsRequest(
       {
         url:
-          "http://localhost:8081/api/v1/post/getUserPosts?userId=502" +
+          "http://localhost:8081/api/v1/post/getUserPosts?userId=" + params.userId +
           "&myId=" +
           userInformation?.user.id,
         method: "GET",

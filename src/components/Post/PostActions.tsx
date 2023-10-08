@@ -62,7 +62,7 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes, path })
       sendLikeRequest(
         {
           url:
-            "http://localhost:8081/api/v1/post/like?userId=" +
+            "http://localhost:8081/api/v1/" + path + "/like?userId=" +
             userInformation?.user.id +
             "&postId=" +
             postId,
@@ -96,7 +96,6 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes, path })
             color={isLiked ? "blue" : "gray"}
             onClick={likeRequest}
             textColor={isLiked ? "blue" : "gray"}
-            className=""
           />
           <StyledButton
             iconType={faComment}
@@ -104,7 +103,6 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes, path })
             color="grey"
             onClick={() => {}}
             textColor="gray"
-            className=""
           />
           <StyledButton
             iconType={faShare}
@@ -112,7 +110,6 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes, path })
             color="grey"
             onClick={() => {}}
             textColor="gray"
-            className=""
           />
         </div>
       </div>

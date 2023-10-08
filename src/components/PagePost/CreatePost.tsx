@@ -29,7 +29,6 @@ const CreatePost: React.FC<CreatePostProps> = ({ onCreatePost }) => {
 
   const { sendRequest: savePostRequest } = useHttp();
   const params = useParams();
-  console.log("Ovo je pageId: " + params.pageId)
 
   const handleSavePost = (postData: PagePostRequest) => {
     savePostRequest(

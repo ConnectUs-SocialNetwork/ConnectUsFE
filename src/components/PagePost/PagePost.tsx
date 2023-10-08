@@ -6,12 +6,15 @@ import PostImage from "../Post/PostImage";
 import PostActions from "../Post/PostActions";
 import PagePost from "../../model/response/PagePostResponse";
 import AddComment from "../Post/AddComment";
+import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 
 interface PagePostProps {
   post: PagePost;
 }
 
 const PagePostComponent: React.FC<PagePostProps> = ({ post }) => {
+  const userInformation = useLoggedUserInformation();
+
   return (
     <div className={classes.postContainer}>
       <AvatarAndFullName
@@ -25,7 +28,7 @@ const PagePostComponent: React.FC<PagePostProps> = ({ post }) => {
         <PostImage imageSrc={post.imageInBase64} altText="slika" />
       )}
       <PostActions postId={post.postId} liked={post.liked} likes={post.likes} path="page-post" />
-      <AddComment imageSrc={post.profileImage} postId={post.postId} path="page-comment"/>
+      <AddComment imageSrc={userInformation?.user.profileImage!} postId={post.postId} path="page-post-comment" />
     </div>
   );
 };

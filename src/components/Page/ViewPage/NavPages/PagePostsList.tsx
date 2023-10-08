@@ -16,7 +16,6 @@ const PagePostsList = () => {
   const params = useParams();
 
   const applyData = (posts: Posts) => {
-    console.log(posts)
     if (posts === undefined) {
       setPosts(new Posts([]));
     } else {
@@ -45,8 +44,6 @@ const PagePostsList = () => {
   const addPostToPostsList = (post: PagePost) => {
     setPosts((prevPosts) => new Posts([post, ...prevPosts.posts]));
   };
-
-  console.log(userInformation?.user.id + params.administratorId!)
 
   return (
     <>

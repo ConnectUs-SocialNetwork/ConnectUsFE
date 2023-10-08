@@ -26,6 +26,7 @@ const AddComment: React.FC<AddCommentProps> = (props) => {
 
   const handleSaveComment = () => {
     let commentData = new CommentRequest(text, user?.user.id!, props.postId);
+    console.log(commentData)
 
     saveComment(
       {

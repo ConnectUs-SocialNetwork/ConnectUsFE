@@ -10,8 +10,9 @@ export default class PagePost {
     dateAndTime: string;
     liked: boolean;
     likes: UserResponse[]
+    comments: UserResponse[]
 
-    constructor(id: number, profileImage: string, userId: number, firstname: string, imageInBase64: string, text: string, dateAndTime: string, isLiked: boolean, likes: UserResponse[]) {
+    constructor(id: number, comments: UserResponse[], profileImage: string, userId: number, firstname: string, imageInBase64: string, text: string, dateAndTime: string, isLiked: boolean, likes: UserResponse[]) {
         this.postId = id;
         this.imageInBase64 = imageInBase64;
         this.text = text;
@@ -21,5 +22,6 @@ export default class PagePost {
         this.name = firstname;
         this.pageId = userId;
         this.profileImage = profileImage;
+        this.comments = comments;
     }
 }

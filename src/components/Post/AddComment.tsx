@@ -11,6 +11,7 @@ import CommentResponse from '../../model/response/CommentResponse';
 interface AddCommentProps{
     imageSrc: string;
     postId: number;
+    path: string;
 }
 
 const AddComment: React.FC<AddCommentProps> = (props) => {
@@ -29,7 +30,7 @@ const AddComment: React.FC<AddCommentProps> = (props) => {
         saveComment(
             {
               url:
-                "http://localhost:8081/api/v1/comment",
+                "http://localhost:8081/api/v1/" + props.path,
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

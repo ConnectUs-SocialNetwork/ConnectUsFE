@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Posts from "../../../../model/response/PostsResponse";
-import PostsComponent from "../../../Feed/PostsComponent";
+import PostsComponent from "../../../Post/PostsComponent";
 import useHttp from "../../../../hooks/useHttp";
 import { useLoggedUserInformation } from "../../../../hooks/useLoggedUserInformation";
 import LoadingPage from "../../../../pages/LoadingPage";

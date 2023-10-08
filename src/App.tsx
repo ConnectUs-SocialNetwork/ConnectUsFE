@@ -14,6 +14,7 @@ import MyPostsList from "./components/MyProfile/NavPages/Posts/MyPostsList.js";
 import EditProfileForm from "./components/Page/CreatePageForm.js";
 import CreatePageForm from "./components/Page/CreatePageForm.js";
 import ViewPage from "./pages/ViewPage.js";
+import PagePostsList from "./components/Page/ViewPage/NavPages/PagePostsList.js";
 
 const router = createBrowserRouter([
   {
@@ -49,8 +50,14 @@ const router = createBrowserRouter([
         element: <CreatePageForm />
       },
       {
-        path: "viewPage/:pageId",
-        element: <ViewPage />
+        path: "viewPage/:pageId/:administratorId",
+        element: <ViewPage />,
+        children: [
+          {
+            index: true,
+            element: <PagePostsList />
+          }
+        ]
       },
       {
         path: "/viewUserProfile/:userId",

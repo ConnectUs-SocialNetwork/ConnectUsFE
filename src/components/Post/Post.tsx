@@ -25,8 +25,8 @@ const PostComponent: React.FC<PostProps> = ({ post }) => {
       {post.imageInBase64 !== "" && (
         <PostImage imageSrc={post.imageInBase64} altText="slika" />
       )}
-      <PostActions postId={post.id} liked={post.liked} likes={post.likes} />
-      <AddComment imageSrc={post.profileImage} postId={post.id} />
+      <PostActions postId={post.id} liked={post.liked} likes={post.likes} path="post" />
+      <AddComment imageSrc={post.profileImage} postId={post.id} path="comment"/>
     </div>
   );
 };

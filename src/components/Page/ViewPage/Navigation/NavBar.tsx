@@ -40,7 +40,7 @@ const NavBar = () => {
                 : `${classes.navItem} ${classes.navLink}`
             }
           >
-            Friends
+            Likes
           </NavLink>
         </li>
         <li>

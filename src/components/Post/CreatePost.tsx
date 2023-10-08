@@ -6,9 +6,9 @@ import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
 import PostModal from "./PostModal";
 import useHttp from "../../hooks/useHttp";
-import PostRequest from "../../model/request/PostRequest";
 import Post from "../../model/response/Post";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
+import PagePost from "../../model/response/PagePostResponse";
 
 interface OpenDialogData {
   isOpen: boolean;
@@ -17,9 +17,11 @@ interface OpenDialogData {
 
 interface CreatePostProps{
   onCreatePost: (post: Post) => void;
+  onCreatePagePost: (pagePost: PagePost) => void;
+  type: string;
 }
 
-const CreatePost: React.FC<CreatePostProps> = ({onCreatePost}) => {
+const CreatePost: React.FC<CreatePostProps> = ({onCreatePost, onCreatePagePost, type}) => {
   const userInformation = useLoggedUserInformation()
   const [dialogData, setDialogData] = useState<OpenDialogData>({
     isOpen: false,
@@ -28,24 +30,43 @@ const CreatePost: React.FC<CreatePostProps> = ({onCreatePost}) => {
 
   const { sendRequest: savePostRequest } = useHttp(); 
 
-  const handleSavePost = (postData: PostRequest) => {
-
-    savePostRequest({
-      url: "http://localhost:8081/api/v1/post/save",
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': "Bearer " + userInformation?.tokens.accessToken
+  const handleSavePost = (postData: any) => {
+    if(type === "post"){
+      savePostRequest({
+        url: "http://localhost:8081/api/v1/post/save",
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': "Bearer " + userInformation?.tokens.accessToken
+        },
+        body: postData
       },
-      body: postData
-    },
-    applyData)
-
-    setDialogData({isOpen: false, type: ''})
+      applyData)
+  
+      setDialogData({isOpen: false, type: ''})
+    }else{
+      savePostRequest({
+        url: "http://localhost:8081/api/v1/page-post",
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': "Bearer " + userInformation?.tokens.accessToken
+        },
+        body: postData
+      },
+      applyData)
+  
+      setDialogData({isOpen: false, type: ''})
+    }
   }
 
-  const applyData = (postResponse: Post) => {
-    onCreatePost(postResponse);
+  const applyData = (postResponse: any) => {
+    if(type === "post"){
+      onCreatePost(postResponse);
+    }else{
+      onCreatePagePost(postResponse)
+    }
+    
   }
 
   const handleOnClose = () => {

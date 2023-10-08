@@ -13,9 +13,10 @@ interface PostActionsProps {
   postId: number;
   liked: boolean;
   likes: UserResponse[];
+  path: string;
 }
 
-const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes }) => {
+const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes, path }) => {
   const [isLiked, setIsLiked] = useState(liked);
   const [likesCounter, setLikesCounter] = useState(likes.length);
   const [likesModalOpen, setLikesModalOpen] = useState(false);
@@ -46,7 +47,7 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes }) => {
       sendUnlikeRequest(
         {
           url:
-            "http://localhost:8081/api/v1/post/unlike?userId=" +
+            "http://localhost:8081/api/v1/" + path + "/unlike?userId=" +
             userInformation?.user.id +
             "&postId=" +
             postId,

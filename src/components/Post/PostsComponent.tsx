@@ -1,5 +1,5 @@
 import Posts from "../../model/response/PostsResponse";
-import PostComponent from '../Feed/Post'
+import PostComponent from './Post'
 import NoPosts from "./NoPosts";
 
 interface PostsProps {

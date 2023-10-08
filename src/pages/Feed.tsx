@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import CreatePost from "../components/Feed/CreatePost";
+import CreatePost from "../components/Post/CreatePost";
 import useHttp from "../hooks/useHttp";
 import Posts from "../model/response/PostsResponse";
-import PostsComponent from "../components/Feed/PostsComponent";
+import PostsComponent from "../components/Post/PostsComponent";
 import { useLoggedUserInformation } from "../hooks/useLoggedUserInformation";
 import LoadingPage from "./LoadingPage";
 import Post from "../model/response/Post";
@@ -52,7 +52,7 @@ const Feed = () => {
       {!isLoading && (
         <>
           <div className={classes.createPostContainer}>
-            <CreatePost onCreatePost={addPostToPostsList} />
+            <CreatePost onCreatePost={addPostToPostsList} onCreatePagePost={() => {}} type="post"/>
           </div>
           <PostsComponent posts={posts!} />
         </>

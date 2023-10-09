@@ -11,12 +11,13 @@ interface ProfileHeaderProps{
     numberOfMutualFriends: number;
     friends: boolean;
     requested: boolean;
+    dateOfBirth: string;
 }
 
 const ProfileHeader: React.FC<ProfileHeaderProps> = (props) => {
     return <div className={classes.profileHeaderContainer}>
         <Image imageSrc={props.imageSrc}/>
-        <Credentials firstname={props.firstaname} lastname={props.lastname} numberOfFriends={props.numberOfFriends} numberOfMutualFriends={props.numberOfMutualFriends} />
+        <Credentials dateOfBirth={props.dateOfBirth} firstname={props.firstaname} lastname={props.lastname} numberOfFriends={props.numberOfFriends} numberOfMutualFriends={props.numberOfMutualFriends} />
         <Actions friends={props.friends} requested={props.requested}/>
     </div>
 }

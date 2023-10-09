@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import classes from "../../../../styles/Profile/Header/Credentials.module.css";
 import { useParams } from "react-router-dom";
 import { useLoggedUserInformation } from "../../../../hooks/useLoggedUserInformation";
@@ -15,21 +17,21 @@ interface CredentialsProps {
 
 const Credentials: React.FC<CredentialsProps> = (props) => {
   const [liked, setLiked] = useState(props.liked);
-  const [numberOfLikes, setNumberOfLikes] = useState(props.numberOfLikes)
+  const [numberOfLikes, setNumberOfLikes] = useState(props.numberOfLikes);
   const params = useParams();
   const userInformation = useLoggedUserInformation();
   const { sendRequest } = useHttp();
 
   useEffect(() => {
     setLiked(props.liked);
-    setNumberOfLikes(props.numberOfLikes)
+    setNumberOfLikes(props.numberOfLikes);
   }, [props.liked, props.numberOfLikes]);
 
   const applyData = () => {
-    if(liked){
-        setNumberOfLikes((prevState) => prevState - 1)
-    }else{
-        setNumberOfLikes((prevState) => prevState + 1)
+    if (liked) {
+      setNumberOfLikes((prevState) => prevState - 1);
+    } else {
+      setNumberOfLikes((prevState) => prevState + 1);
     }
     setLiked(!liked);
   };
@@ -79,22 +81,35 @@ const Credentials: React.FC<CredentialsProps> = (props) => {
         <p className={classes.numberOfFriends}>
           Number of likes: {numberOfLikes}
         </p>
+        <p className={classes.description}>Description: {props.description}</p>
       </div>
-      <div className={classes.headerActions}>
-        <button className={classes.button} onClick={handleSendRequest}>
-          {!liked && (
-            <>
-              <FontAwesomeIcon icon={faThumbsUp} size="xl" />
-              <p className={classes.p}>Like</p>
-            </>
-          )}
-          {liked && (
-            <>
-              <FontAwesomeIcon icon={faThumbsUp} size="xl" />
-              <p className={classes.p}>Unlike</p>
-            </>
-          )}
-        </button>
+      <div>
+        <div className={classes.headerActions}>
+          <button className={classes.button} onClick={handleSendRequest}>
+            {!liked && (
+              <>
+                <FontAwesomeIcon icon={faThumbsUp} size="xl" />
+                <p className={classes.p}>Like</p>
+              </>
+            )}
+            {liked && (
+              <>
+                <FontAwesomeIcon icon={faThumbsDown} size="xl" />
+                <p className={classes.p}>Unlike</p>
+              </>
+            )}
+          </button>
+        </div>
+        {userInformation?.user.id == params.administratorId && (
+          <div className={classes.headerActions}>
+            <button className={classes.button} onClick={handleSendRequest}>
+              <>
+                <FontAwesomeIcon icon={faPenToSquare} size="xl" />
+                <p className={classes.p}>Edit</p>
+              </>
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

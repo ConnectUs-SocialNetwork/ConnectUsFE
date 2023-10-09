@@ -27,7 +27,7 @@ const PagePostComponent: React.FC<PagePostProps> = ({ post }) => {
       {post.imageInBase64 !== "" && (
         <PostImage imageSrc={post.imageInBase64} altText="slika" />
       )}
-      <PostActions postId={post.postId} liked={post.liked} likes={post.likes} path="page-post" />
+      <PostActions postId={post.postId} liked={post.liked} numberOfLikes={post.numberOfLikes} numberOfComments={post.numberOfComments} path="page-post" />
       <AddComment imageSrc={userInformation?.user.profileImage!} postId={post.postId} path="page-post-comment" />
     </div>
   );

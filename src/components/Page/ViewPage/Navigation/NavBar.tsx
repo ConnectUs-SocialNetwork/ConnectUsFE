@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classes from "../../../../styles/Profile/Navigation/NavBar.module.css";
 
 const NavBar = () => {
@@ -20,20 +20,8 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-        <NavLink
-            to='about'
-            className={({ isActive }) =>
-              isActive
-                ? `${classes.navItem} ${classes.navLink} ${classes.active}`
-                : `${classes.navItem} ${classes.navLink}`
-            }
-          >
-            Information
-          </NavLink>
-        </li>
-        <li>
           <NavLink
-            to='friends'
+            to='likes'
             className={({ isActive }) =>
               isActive
                 ? `${classes.navItem} ${classes.navLink} ${classes.active}`

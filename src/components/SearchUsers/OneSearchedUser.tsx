@@ -4,16 +4,22 @@ import BlankPhoto from "../../assets/BlankProfilePicture.png";
 import StyledButton from "../UI/StyledButton";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 
 interface OneSearchedUserProps {
   user: SearchUserResponse;
 }
 
 const OneSearchedUser: React.FC<OneSearchedUserProps> = ({ user }) => {
+  const userInformation = useLoggedUserInformation();
   const navigate = useNavigate();
 
   const handleViewProfile = () => {
-    navigate('/view-profile/' + user.id)
+    if(userInformation?.user.id == user.id){
+      navigate('/viewMyProfile')
+    }else{
+      navigate('/viewUserProfile/' + user.id)
+    }
   }
 
   return (

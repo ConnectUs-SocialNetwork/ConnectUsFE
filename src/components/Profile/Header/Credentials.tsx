@@ -5,6 +5,7 @@ interface CredentialsProps{
     lastname: string;
     numberOfFriends: number;
     numberOfMutualFriends: number;
+    dateOfBirth: string;
 }
 
 const Credentials: React.FC<CredentialsProps> = (props) => {
@@ -12,6 +13,7 @@ const Credentials: React.FC<CredentialsProps> = (props) => {
         <p className={classes.nameAndSurname}>{props.firstname} {props.lastname}</p>
         <p className={classes.numberOfFriends}>Number of riends: {props.numberOfFriends}</p>
         <p className={classes.numberOfMutualFriends}>Number of mutual friends: {props.numberOfMutualFriends}</p>
+        <p className={classes.numberOfMutualFriends}>Date of birth: {props.dateOfBirth}</p>
     </div>
 }
 

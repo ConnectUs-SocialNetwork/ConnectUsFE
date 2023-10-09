@@ -6,30 +6,43 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { faShare } from "@fortawesome/free-solid-svg-icons";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 import useHttp from "../../hooks/useHttp";
-import UserResponse from "../../model/response/UserResponse";
-import LikesModal from "./LikesModal";
 
 interface PostActionsProps {
   postId: number;
   liked: boolean;
-  likes: UserResponse[];
+  numberOfLikes: number;
+  numberOfComments: number;
   path: string;
 }
 
-const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes, path }) => {
+const PostActions: React.FC<PostActionsProps> = ({
+  postId,
+  liked,
+  numberOfLikes,
+  numberOfComments,
+  path,
+}) => {
   const [isLiked, setIsLiked] = useState(liked);
-  const [likesCounter, setLikesCounter] = useState(likes.length);
+  const [likesCounter, setLikesCounter] = useState(numberOfLikes);
+  const [commentCounter, setCommentsCounter] = useState(numberOfComments);
   const [likesModalOpen, setLikesModalOpen] = useState(false);
   const userInformation = useLoggedUserInformation();
   const { sendRequest: sendLikeRequest } = useHttp();
   const { sendRequest: sendUnlikeRequest } = useHttp();
 
   var likesString = "";
+  var commentsString = "";
 
   if (likesCounter === 1) {
     likesString = "like";
   } else if (likesCounter > 1) {
     likesString = "likes";
+  }
+
+  if (commentCounter === 1) {
+    commentsString = "comment";
+  } else if (commentCounter > 1) {
+    commentsString = "comments";
   }
 
   const applyLikeData = () => {
@@ -47,7 +60,9 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes, path })
       sendUnlikeRequest(
         {
           url:
-            "http://localhost:8081/api/v1/" + path + "/unlike?userId=" +
+            "http://localhost:8081/api/v1/" +
+            path +
+            "/unlike?userId=" +
             userInformation?.user.id +
             "&postId=" +
             postId,
@@ -62,7 +77,9 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes, path })
       sendLikeRequest(
         {
           url:
-            "http://localhost:8081/api/v1/" + path + "/like?userId=" +
+            "http://localhost:8081/api/v1/" +
+            path +
+            "/like?userId=" +
             userInformation?.user.id +
             "&postId=" +
             postId,
@@ -75,18 +92,24 @@ const PostActions: React.FC<PostActionsProps> = ({ postId, liked, likes, path })
       );
     }
   };
+
+  //{likesModalOpen && <LikesModal likes={likes} onClose={() => {setLikesModalOpen(false)}}/>}
   return (
     <>
-    {likesModalOpen && <LikesModal likes={likes} onClose={() => {setLikesModalOpen(false)}}/>}
       <div>
         <div className={classes.likesAndCommentsContainer}>
           <div className={classes.likes}>
-            <p className={classes.likesText} onClick={() => setLikesModalOpen(true)}>
+            <p
+              className={classes.likesText}
+              onClick={() => setLikesModalOpen(true)}
+            >
               {likesCounter === 0 ? "" : likesCounter} {likesString}
             </p>
           </div>
           <div className={classes.comments}>
-            <p className={classes.commentText}>13 comments</p>
+            <p className={classes.commentText}>
+              {commentCounter === 0 ? "" : commentCounter} {commentsString}
+            </p>
           </div>
         </div>
         <div className={classes.actionsContainer}>

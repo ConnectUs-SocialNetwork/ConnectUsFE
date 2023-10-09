@@ -15,6 +15,7 @@ import EditProfileForm from "./components/Page/CreatePageForm.js";
 import CreatePageForm from "./components/Page/CreatePageForm.js";
 import ViewPage from "./pages/ViewPage.js";
 import PagePostsList from "./components/Page/ViewPage/NavPages/PagePostsList.js";
+import Likers from "./components/Page/ViewPage/NavPages/Likers.js";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <PagePostsList />
+          },
+          {
+            path: "likes",
+            element: <Likers />
           }
         ]
       },

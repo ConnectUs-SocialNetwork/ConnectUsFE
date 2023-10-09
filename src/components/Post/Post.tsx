@@ -12,6 +12,10 @@ interface PostProps {
 }
 
 const PostComponent: React.FC<PostProps> = ({ post }) => {
+  const commentTriggered = () => {
+
+  }
+
   return (
     <div className={classes.postContainer}>
       <AvatarAndFullName
@@ -25,8 +29,8 @@ const PostComponent: React.FC<PostProps> = ({ post }) => {
       {post.imageInBase64 !== "" && (
         <PostImage imageSrc={post.imageInBase64} altText="slika" />
       )}
-      <PostActions postId={post.id} liked={post.liked} likes={post.likes} path="post" />
-      <AddComment imageSrc={post.profileImage} postId={post.id} path="comment"/>
+      <PostActions postId={post.id} liked={post.liked} numberOfLikes={post.numberOfLikes} numberOfComments={post.numberOfComments} path="post" />
+      <AddComment imageSrc={post.profileImage} postId={post.id} path="comment" />
     </div>
   );
 };

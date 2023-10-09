@@ -4,6 +4,7 @@ import SearchUserResponse from "../../../../model/response/SearchFriendsResponse
 import useHttp from "../../../../hooks/useHttp";
 import { useLoggedUserInformation } from "../../../../hooks/useLoggedUserInformation";
 import AllUserFriends from "./AllUserFriends";
+import NoUsers from "../../../Page/NoUsers";
 
 const MyFriends = () => {
   const [filteredFriends, setFilteredFriends] = useState<SearchUserResponse[]>(
@@ -21,7 +22,8 @@ const MyFriends = () => {
       {
         url:
           "http://localhost:8081/api/v1/user/getUserFriends" +
-          "?userId=" + userInformation?.user.id +
+          "?userId=" +
+          userInformation?.user.id +
           "&myId=" +
           userInformation?.user.id,
         method: "GET",
@@ -34,9 +36,14 @@ const MyFriends = () => {
     );
   }, []);
   return (
-    <div className={classes.friendsContainer}>
-      <AllUserFriends users={filteredFriends} />
-    </div>
+    <>
+      {filteredFriends.length !== 0 && (
+        <div className={classes.friendsContainer}>
+          <AllUserFriends users={filteredFriends} />
+        </div>
+      )}
+      {filteredFriends.length === 0 && <NoUsers />}
+    </>
   );
 };
 

@@ -46,6 +46,7 @@ const UserProfilePage = () => {
         numberOfMutualFriends={userData?.numberOfMutualFriends!}
         friends={userData?.friends!}
         requested={userData?.requested!}
+        dateOfBirth={userData?.dateOfBirth!}
       />
       <NavBar />
       <div className={classes.outlet}>

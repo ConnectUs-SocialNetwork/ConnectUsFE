@@ -3,6 +3,7 @@ class UserProfileResponse {
     firstname: string;
     lastname: string;
     profilePicture: string;
+    dateOfBirth: string;
     numberOfFriends: number;
     numberOfMutualFriends: number;
     friends: boolean;
@@ -12,6 +13,7 @@ class UserProfileResponse {
       id: number,
       firstname: string,
       lastname: string,
+      dob: string,
       profilePicture: string,
       numberOfFriends: number,
       numberOfMutualFriends: number,
@@ -21,6 +23,7 @@ class UserProfileResponse {
       this.id = id;
       this.firstname = firstname;
       this.lastname = lastname;
+      this.dateOfBirth = dob;
       this.profilePicture = profilePicture;
       this.numberOfFriends = numberOfFriends;
       this.numberOfMutualFriends = numberOfMutualFriends;

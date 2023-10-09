@@ -45,7 +45,7 @@ const NavBar = () => {
       </div>
       <div className={classes.navItemsContainer}>
         <NavItem iconType={faUserGroup} text="Network" to="/my-network" />
-        <NavItem iconType={faPager} text="Pages" to="" />
+        <NavItem iconType={faPager} text="Pages" to="/pages" />
         <NavItem iconType={faHome} text="Home" to="/" />
         <NavItem iconType={faBell} text="Notifications" to="/notifications" />
       </div>

@@ -42,7 +42,7 @@ const PostActions: React.FC<PostActionsProps> = ({
   const { sendRequest: sendGetComments } = useHttp();
 
   useEffect(() => {
-    setCommentsCounter(numberOfComments + 1);
+    setCommentsCounter(numberOfComments);
   }, [numberOfComments]);
 
   var likesString = "";

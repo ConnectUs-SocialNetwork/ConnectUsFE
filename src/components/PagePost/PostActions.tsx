@@ -6,7 +6,7 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { faShare } from "@fortawesome/free-solid-svg-icons";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 import useHttp from "../../hooks/useHttp";
-import LikesModal from "./LikesModal";
+import LikesModal from "../Post/LikesModal";
 import SearchUserResponse from "../../model/response/SearchFriendsResponse";
 import CommentResponse from "../../model/response/CommentResponse";
 import CommentsModal from "../Comments/CommentsModal";
@@ -42,8 +42,8 @@ const PostActions: React.FC<PostActionsProps> = ({
   const { sendRequest: sendGetComments } = useHttp();
 
   useEffect(() => {
-    setCommentsCounter(numberOfComments + 1);
-  }, [numberOfComments]);
+    setCommentsCounter(numberOfComments + 1)
+  }, [numberOfComments])
 
   var likesString = "";
   var commentsString = "";
@@ -84,6 +84,7 @@ const PostActions: React.FC<PostActionsProps> = ({
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: "Bearer " + userInformation?.tokens.accessToken,
           },
         },
         applyUnlikeData
@@ -101,6 +102,7 @@ const PostActions: React.FC<PostActionsProps> = ({
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: "Bearer " + userInformation?.tokens.accessToken,
           },
         },
         applyLikeData
@@ -109,16 +111,14 @@ const PostActions: React.FC<PostActionsProps> = ({
   };
 
   const applyUsersWhoLikedPostData = (data: SearchUserResponse[]) => {
-    console.log(data);
     setUsersWhoLikedPost(data);
   };
 
   const getUserWhoLikedPost = () => {
-    console.log("aaa");
     sendGetUsersWhoLikedPost(
       {
         url:
-          "http://localhost:8081/api/v1/post/getUsersWhoLikedPost?postId=" +
+          "http://localhost:8081/api/v1/page-post/getUsersWhoLikedPost?postId=" +
           postId +
           "&myId=" +
           userInformation?.user.id,
@@ -133,11 +133,11 @@ const PostActions: React.FC<PostActionsProps> = ({
   };
 
   const addCommentToList = (comment: CommentResponse) => {
-    console.log("Pozivam metodu za dodavanje komentara u listu!");
+    console.log("Pozivam metodu za dodavanje komentara u listu!")
     const updatedComments = [...comments, comment];
     setComments(updatedComments);
-    setCommentsCounter((prevState) => prevState + 1);
-  };
+    setCommentsCounter((prevState) => prevState + 1)
+  }
 
   const applyComments = (data: CommentResponse[]) => {
     setComments(data);
@@ -146,7 +146,9 @@ const PostActions: React.FC<PostActionsProps> = ({
   const getComments = () => {
     sendGetComments(
       {
-        url: "http://localhost:8081/api/v1/comment?postId=" + postId,
+        url:
+          "http://localhost:8081/api/v1/page-post-comment?postId=" +
+          postId,
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -157,7 +159,6 @@ const PostActions: React.FC<PostActionsProps> = ({
     );
   };
 
-  //
   return (
     <>
       {likesModalOpen && (
@@ -165,7 +166,6 @@ const PostActions: React.FC<PostActionsProps> = ({
           likes={usersWhoLikedPost}
           onClose={() => {
             setLikesModalOpen(false);
-            getUserWhoLikedPost();
           }}
         />
       )}
@@ -174,9 +174,8 @@ const PostActions: React.FC<PostActionsProps> = ({
           comments={comments}
           onClose={() => {
             setCommentsModalOpen(false);
-            getComments();
           }}
-          path="comment"
+          path="page-post-comment"
           postId={postId}
           onAddComment={addCommentToList}
         />

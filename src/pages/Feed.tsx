@@ -6,7 +6,7 @@ import PostsComponent from "../components/Post/PostsComponent";
 import { useLoggedUserInformation } from "../hooks/useLoggedUserInformation";
 import LoadingPage from "./LoadingPage";
 import Post from "../model/response/Post";
-import classes from '../styles/Pages/Feed.module.css'
+import classes from "../styles/Pages/Feed.module.css";
 
 const Feed = () => {
   const [posts, setPosts] = useState<Posts>(new Posts([]));
@@ -52,9 +52,15 @@ const Feed = () => {
       {!isLoading && (
         <>
           <div className={classes.createPostContainer}>
-            <CreatePost onCreatePost={addPostToPostsList} onCreatePagePost={() => {}} type="post"/>
+            <CreatePost
+              onCreatePost={addPostToPostsList}
+              onCreatePagePost={() => {}}
+              type="post"
+            />
           </div>
-          <PostsComponent posts={posts!} />
+          <div className={classes.postsContainer}>
+            <PostsComponent posts={posts!} />
+          </div>
         </>
       )}
     </>

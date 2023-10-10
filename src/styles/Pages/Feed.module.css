@@ -2,5 +2,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: -20px;
+}
+
+.postsContainer{
+    margin-left: 20px;
+}
+
+.pagePostContainer{
+    margin-left: 20px;
+    margin-top: 20px;
 }

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import AvatarAndFullName from "./AvatarAndFullName";
 import classes from "../../styles/Feed/Post.module.css";
 import PostText from "../Post/PostText";
 import PostImage from "../Post/PostImage";
-import PostActions from "../Post/PostActions";
 import PagePost from "../../model/response/PagePostResponse";
-import AddComment from "../Post/AddComment";
+import AddComment from "../Comments/AddComment";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
+import PostActions from "./PostActions";
+import CommentResponse from "../../model/response/CommentResponse";
 
 interface PagePostProps {
   post: PagePost;
@@ -14,6 +15,13 @@ interface PagePostProps {
 
 const PagePostComponent: React.FC<PagePostProps> = ({ post }) => {
   const userInformation = useLoggedUserInformation();
+  const [numberOfComments, setNumberOfComments] = useState(
+    post.numberOfComments
+  );
+
+  const addComment = (data: CommentResponse) => {
+    setNumberOfComments((prevState) => prevState + 1);
+  };
 
   return (
     <div className={classes.postContainer}>
@@ -27,8 +35,19 @@ const PagePostComponent: React.FC<PagePostProps> = ({ post }) => {
       {post.imageInBase64 !== "" && (
         <PostImage imageSrc={post.imageInBase64} altText="slika" />
       )}
-      <PostActions postId={post.postId} liked={post.liked} numberOfLikes={post.numberOfLikes} numberOfComments={post.numberOfComments} path="page-post" />
-      <AddComment imageSrc={userInformation?.user.profileImage!} postId={post.postId} path="page-post-comment" />
+      <PostActions
+        postId={post.postId}
+        liked={post.liked}
+        numberOfLikes={post.numberOfLikes}
+        numberOfComments={numberOfComments}
+        path="page-post"
+      />
+      <AddComment
+        imageSrc={userInformation?.user.profileImage!}
+        postId={post.postId}
+        path="page-post-comment"
+        onAddComment={addComment}
+      />
     </div>
   );
 };

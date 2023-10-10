@@ -11,14 +11,14 @@
   .modal {
     position: fixed;
     top: 50px;
-    left: 32%;
-    width: 37%;
+    left: 30.5%;
+    width: 590px;
     z-index: 100;
     overflow: hidden;
     margin-top: 50px;
   }
 
-  .likesHeader{
+  .commentsHeader{
     width: auto;
     height: max-content;
     font-family: sans-serif;
@@ -28,7 +28,8 @@
   }
 
   .content{
-    margin-left: 25px;
-    max-height: 500px;
+    margin-left: 15px;
+    max-height: 400px;
     overflow-y: auto;
+    overflow-x: hidden;
   }

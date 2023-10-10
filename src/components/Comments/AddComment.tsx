@@ -12,6 +12,7 @@ interface AddCommentProps {
   imageSrc: string;
   postId: number;
   path: string;
+  onAddComment: (comment: CommentResponse) => void;
 }
 
 const AddComment: React.FC<AddCommentProps> = (props) => {
@@ -20,7 +21,7 @@ const AddComment: React.FC<AddCommentProps> = (props) => {
   const { sendRequest: saveComment } = useHttp();
 
   const applyData = (commentData: CommentResponse) => {
-    console.log(commentData);
+    props.onAddComment(commentData);
     setText("");
   };
 

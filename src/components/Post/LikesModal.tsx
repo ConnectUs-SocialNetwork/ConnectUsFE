@@ -3,43 +3,41 @@ import ReactDOM from "react-dom";
 
 import Card from "../UI/Card";
 import classes from "../../styles/Feed/LikesModal.module.css";
-import PostRequest from "../../model/request/PostRequest";
-import UserResponse from "../../model/response/UserResponse";
-import FriendCard from "./FriendCard";
-import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
+import OneSearchedUser from "../SearchUsers/OneSearchedUser";
+import SearchUserResponse from "../../model/response/SearchFriendsResponse";
 
 interface BackdropProps {
-  onConfirm: () => void;
+  onClose: () => void;
 }
 
 const Backdrop: React.FC<BackdropProps> = (props) => {
-  return <div className={classes.backdrop} onClick={props.onConfirm} />;
+  return <div className={classes.backdrop} onClick={props.onClose} />;
 };
 
 interface ModalOverlayProps {
-  onClose: (postData: PostRequest) => void;
+  onClose: () => void;
+  likes: SearchUserResponse[];
 }
 
 const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
-  const user = useLoggedUserInformation()
   return (
     <Card className={classes.modal}>
       <header className={classes.likesHeader}>
         <h2>Likes</h2>
       </header>
-      <div className={classes.content}>
-        <FriendCard avatar="" />
-      </div>
-      <div className={classes.actions}>
-        {" "}
-        <button>Post</button>
-      </div>
+      {props.likes.length !== 0 && (
+        <div className={classes.content}>
+          {props.likes.map((user) => (
+            <OneSearchedUser user={user} key={user.id}/>
+          ))}
+        </div>
+      )}
     </Card>
   );
 };
 
 interface LikesModalProps {
-  likes: UserResponse[];
+  likes: SearchUserResponse[];
   onClose: () => void;
 }
 
@@ -47,12 +45,11 @@ const LikesModal: React.FC<LikesModalProps> = (props) => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
-        <Backdrop onConfirm={props.onClose} />,
+        <Backdrop onClose={props.onClose} />,
         document.getElementById("backdrop-root")!
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay onClose={props.onClose}
-        />,
+        <ModalOverlay onClose={props.onClose} likes={props.likes} />,
         document.getElementById("overlay-root")!
       )}
     </React.Fragment>

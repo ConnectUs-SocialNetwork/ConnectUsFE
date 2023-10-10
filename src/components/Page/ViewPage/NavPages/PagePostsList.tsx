@@ -59,7 +59,9 @@ const PagePostsList = () => {
               />
             </div>
           )}
-          <PostsComponent posts={posts!} />
+          <div className={classes.pagePostContainer}>
+            <PostsComponent posts={posts!} />
+          </div>
         </div>
       )}
     </>

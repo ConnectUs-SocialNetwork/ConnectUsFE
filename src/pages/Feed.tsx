@@ -36,11 +36,7 @@ const Feed = () => {
       },
       applyData
     );
-
-    console.log("Render iz useEffect hooka u Feed komponenti.");
   }, []);
-
-  console.log("Render iz Feed komponente");
 
   const addPostToPostsList = (post: Post) => {
     setPosts((prevPosts) => new Posts([post, ...prevPosts.posts]));

@@ -36,11 +36,7 @@ const PostsList = () => {
       },
       applyData
     );
-
-    console.log("Render iz useEffect hooka u Feed komponenti.");
   }, []);
-
-  console.log("Render iz Feed komponente");
 
   return (
     <>

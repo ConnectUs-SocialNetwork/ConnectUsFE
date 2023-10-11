@@ -8,45 +8,51 @@ import { useLoggedUserInformation } from "../hooks/useLoggedUserInformation";
 import { useEffect, useState } from "react";
 
 const UserProfilePage = () => {
-  const [userData, setUserData] = useState<UserProfileResponse>()
-  const params = useParams()
+  const [userData, setUserData] = useState<UserProfileResponse>();
+  const params = useParams();
   const { sendRequest: getUserData } = useHttp();
   const userInformation = useLoggedUserInformation();
 
   useEffect(() => {
-
     const applyData = (userDataResponse: UserProfileResponse) => {
       setUserData(userDataResponse);
-    }
+    };
 
     getUserData(
       {
         url:
-          "http://localhost:8081/api/v1/user/getUserProfile?userId=" + params.userId +
+          "http://localhost:8081/api/v1/user/getUserProfile?userId=" +
+          params.userId +
           "&myId=" +
           userInformation?.user.id,
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          'Authorization': 'Bearer ' + userInformation?.tokens.accessToken,
+          Authorization: "Bearer " + userInformation?.tokens.accessToken,
         },
       },
       applyData
     );
-
-  }, [])
+  }, []);
 
   return (
     <div className={classes.viewUserProfileContainer}>
       <ProfileHeader
-        imageSrc={userData?.profilePicture === "" ? BlankProfilePicture : userData?.profilePicture!}
+        id={userData?.id!}
+        imageSrc={
+          userData?.profilePicture === ""
+            ? BlankProfilePicture
+            : userData?.profilePicture!
+        }
         firstaname={userData?.firstname!}
         lastname={userData?.lastname!}
         numberOfFriends={userData?.numberOfFriends!}
         numberOfMutualFriends={userData?.numberOfMutualFriends!}
         friends={userData?.friends!}
-        requested={userData?.requested!}
+        iSentFriendRequest={userData?.requestSentByMe!}
+        heSentFriendRequest={userData?.heSentFriendRequest!}
         dateOfBirth={userData?.dateOfBirth!}
+        requestId={userData?.requestId!}
       />
       <NavBar />
       <div className={classes.outlet}>

@@ -7,8 +7,10 @@ class UserProfileResponse {
     numberOfFriends: number;
     numberOfMutualFriends: number;
     friends: boolean;
-    requested: boolean;
-  
+    requestSentByMe: boolean;
+    heSentFriendRequest: boolean;
+    requestId: number;
+
     constructor(
       id: number,
       firstname: string,
@@ -18,7 +20,9 @@ class UserProfileResponse {
       numberOfFriends: number,
       numberOfMutualFriends: number,
       friends: boolean,
-      requested: boolean
+      requestSentByMe: boolean,
+      heSentFriendRequest: boolean,
+      requestId: number,
     ) {
       this.id = id;
       this.firstname = firstname;
@@ -28,7 +32,9 @@ class UserProfileResponse {
       this.numberOfFriends = numberOfFriends;
       this.numberOfMutualFriends = numberOfMutualFriends;
       this.friends = friends;
-      this.requested = requested;
+      this.requestSentByMe = requestSentByMe;
+      this.heSentFriendRequest = heSentFriendRequest;
+      this.requestId = requestId;
     }
   }
   

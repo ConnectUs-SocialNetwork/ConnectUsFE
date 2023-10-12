@@ -1,0 +1,11 @@
+.listContainer{
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 600px;
+    margin-top: 20px;
+}
+
+.header{
+    margin: 0;
+}

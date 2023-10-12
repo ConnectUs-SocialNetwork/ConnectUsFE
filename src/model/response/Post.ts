@@ -10,7 +10,6 @@ export default class Post {
     liked: boolean;
     numberOfLikes: number;
     numberOfComments: number;
-    
 
     constructor(id: number, profileImage: string, userId: number, firstname: string, lastname: string, imageInBase64: string, text: string, dateAndTime: string, isLiked: boolean, likes: number, noc: number) {
         this.id = id;
@@ -25,4 +24,5 @@ export default class Post {
         this.profileImage = profileImage;
         this.numberOfComments = noc;
     }
+
 }

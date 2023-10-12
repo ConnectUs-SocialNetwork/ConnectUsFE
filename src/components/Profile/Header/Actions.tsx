@@ -85,13 +85,20 @@ const Actions: React.FC<ActionsProps> = (props) => {
     );
   };
 
-  const applyAcceptRequestData = (data: any) => {
-    setFriends(true);
-    props.onAddOrRemoveFriend("add");
+  const applyProcessRequestData = (data: any) => {
+    if (data.status === "REJECTED") {
+      setFriends(false);
+      setHeSendFriendRequest(false);
+      setiSendFriendRequest(false);
+    } else {
+      setFriends(true);
+      props.onAddOrRemoveFriend("add");
+    }
+    
   };
 
-  const acceptRequest = () => {
-    const requestData = new ProcessRequestDTO(props.requestId, true);
+  const processRequest = (accept: boolean) => {
+    const requestData = new ProcessRequestDTO(props.requestId, accept);
     sendRequest(
       {
         url: "http://localhost:8081/api/v1/friend-request/processRequest",
@@ -102,14 +109,14 @@ const Actions: React.FC<ActionsProps> = (props) => {
         },
         body: requestData,
       },
-      applyAcceptRequestData
+      applyProcessRequestData
     );
   };
 
   const applyRemoveFriendData = (data: any) => {
     setFriends(false);
-    setiSendFriendRequest(false)
-    setHeSendFriendRequest(false)
+    setiSendFriendRequest(false);
+    setHeSendFriendRequest(false);
     props.onAddOrRemoveFriend("remove");
   };
 
@@ -158,7 +165,9 @@ const Actions: React.FC<ActionsProps> = (props) => {
       {!friends && heSentFriendRequest && (
         <button
           className={classes.button}
-          onClick={acceptRequest}
+          onClick={() => {
+            processRequest(true);
+          }}
           disabled={isLoading}
         >
           {!isLoading && (
@@ -171,6 +180,28 @@ const Actions: React.FC<ActionsProps> = (props) => {
             <>
               <FontAwesomeIcon icon={faPaperPlane} size="xl" />
               <p className={classes.p}>Accepting request...</p>
+            </>
+          )}
+        </button>
+      )}
+      {!friends && heSentFriendRequest && (
+        <button
+          className={classes.button}
+          onClick={() => {
+            processRequest(false);
+          }}
+          disabled={isLoading}
+        >
+          {!isLoading && (
+            <>
+              <FontAwesomeIcon icon={faPaperPlane} size="xl" />
+              <p className={classes.p}>Reject request</p>
+            </>
+          )}
+          {isLoading && (
+            <>
+              <FontAwesomeIcon icon={faPaperPlane} size="xl" />
+              <p className={classes.p}>Rejecting request...</p>
             </>
           )}
         </button>

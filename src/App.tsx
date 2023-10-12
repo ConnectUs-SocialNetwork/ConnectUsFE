@@ -17,6 +17,12 @@ import ViewPage from "./pages/ViewPage.js";
 import PagePostsList from "./components/Page/ViewPage/NavPages/PagePostsList.js";
 import Likers from "./components/Page/ViewPage/NavPages/Likers.js";
 import PageFeed from "./pages/PageFeed.js";
+import NotificationsPage from "./pages/NotificationsPage.js";
+import ViewPostPage from "./pages/ViewPostPage.js";
+import ViewPagePostPage from "./pages/ViewPagePostPage.js";
+import AllNotificationNavPage from "./components/Notifications/AllNotificationsNavPage.js";
+import ReadNotificationNavPage from "./components/Notifications/UnreadNotificationsNavPage.js";
+import UnreadNotificationNavPage from "./components/Notifications/UnreadNotificationsNavPage.js";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +43,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/notifications",
-        element: <p>Notifications</p>
+        element: <NotificationsPage />,
+        children: [
+          {
+            index: true,
+            element: <AllNotificationNavPage />
+          },
+          {
+            path: "unread",
+            element: <UnreadNotificationNavPage />
+          }
+        ]
       }, 
       {
         path: "/pages",
@@ -54,6 +70,14 @@ const router = createBrowserRouter([
       {
         path: "createPage",
         element: <CreatePageForm />
+      },
+      {
+        path: "viewPost/:postId",
+        element: <ViewPostPage />
+      },
+      {
+        path: "viewPagePost/:postId",
+        element: <ViewPagePostPage />
       },
       {
         path: "viewPage/:pageId/:administratorId",

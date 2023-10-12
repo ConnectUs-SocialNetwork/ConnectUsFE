@@ -1,0 +1,102 @@
+.notificationContainer {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  width: 570px;
+  height: auto;
+  border-radius: 15px;
+  border: 1px soolid rgb(221, 221, 221);
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+.notificationContainer:hover{
+    transition: background-color 0.2s; /* Dodajte glatku tranziciju za boju pozadine */
+    cursor: pointer;
+    background-color: rgb(240, 240, 240);
+}
+
+.notificationAvatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
+.text {
+  margin-left: 15px;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: auto;
+}
+
+.timeAgo {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 15px;
+  color: gray;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  margin-top: 10px;
+}
+
+.button {
+  background-color: white; /* Postavite boju pozadine na belu */
+  border: 0.5px solid rgb(204, 204, 204); /* Uklonite ivice dugmeta */
+  padding: 10px 20px; /* Dodajte unutrašnji prostor dugmetu */
+  cursor: pointer; /* Promenite kursor na pokazivač pri hoveru */
+  display: flex; /* Postavite prikaz na fleksibilan kako biste ikonu i tekst stavili jedno pored drugog */
+  align-items: center; /* Centrirajte ikonu i tekst vertikalno */
+  transition: background-color 0.3s; /* Dodajte glatku tranziciju za boju pozadine */
+  border-radius: 10px;
+  width: 220px;
+  height: 40px;
+  text-align: center;
+  justify-content: center;
+  margin-right: 30px;
+}
+
+.icon {
+  margin-left: -10px;
+  margin-bottom: 3px;
+}
+
+.button:hover {
+  border: 1px solid black;
+}
+
+.p {
+  font-family: sans-serif;
+  margin-left: 10px;
+  font-size: 15px;
+  margin-top: 15px;
+}
+
+.readButton {
+  background-color: white; /* Postavite boju pozadine na belu */
+  border: 0.5px solid rgb(204, 204, 204); /* Uklonite ivice dugmeta */
+  padding: 10px 20px; /* Dodajte unutrašnji prostor dugmetu */
+  cursor: pointer; /* Promenite kursor na pokazivač pri hoveru */
+  display: flex; /* Postavite prikaz na fleksibilan kako biste ikonu i tekst stavili jedno pored drugog */
+  align-items: center; /* Centrirajte ikonu i tekst vertikalno */
+  transition: background-color 0.3s; /* Dodajte glatku tranziciju za boju pozadine */
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  justify-content: center;
+  margin-left: 20px;
+}
+.readicon {
+  margin-left: -10px;
+  margin-bottom: 3px;
+}
+
+.readButton:hover {
+  border: 1px solid black;
+}

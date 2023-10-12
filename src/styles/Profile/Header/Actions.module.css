@@ -1,5 +1,4 @@
 .headerActions{
-    display: flex;
     justify-content: right;
     text-align: right;
     width: auto;
@@ -22,6 +21,7 @@
     height: 40px;
     text-align: center;
     justify-content: center;
+    margin-bottom: 10px;
   }  
   
   .icon{

@@ -36,7 +36,7 @@ const NavBar = () => {
     navigate('/auth?mode=login')
   }
   const userInformation = useLoggedUserInformation();
-
+  //<NavItem iconType={faUserGroup} text="Network" to="/my-network" />
   return (
     <div className={classes.navContainer}>
       <div className={classes.searchContainer}>
@@ -44,7 +44,6 @@ const NavBar = () => {
         <SearchBar />
       </div>
       <div className={classes.navItemsContainer}>
-        <NavItem iconType={faUserGroup} text="Network" to="/my-network" />
         <NavItem iconType={faPager} text="Pages" to="/pages" />
         <NavItem iconType={faHome} text="Home" to="/" />
         <NavItem iconType={faBell} text="Notifications" to="/notifications" />

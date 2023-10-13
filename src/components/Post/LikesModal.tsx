@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import Card from "../UI/Card";
 import classes from "../../styles/Feed/LikesModal.module.css";
-import OneSearchedUser from "../SearchUsers/OneSearchedUser";
+import OneSearchedUser from "../Search/Users/SearchedUser";
 import SearchUserResponse from "../../model/response/SearchFriendsResponse";
 
 interface BackdropProps {

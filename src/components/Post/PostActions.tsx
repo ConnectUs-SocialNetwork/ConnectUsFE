@@ -218,7 +218,7 @@ const PostActions: React.FC<PostActionsProps> = ({
             iconType={faComment}
             text="Comment"
             color="grey"
-            onClick={() => {}}
+            onClick={() => {setCommentsModalOpen(true)}}
             textColor="gray"
           />
           <StyledButton

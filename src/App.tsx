@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthenticationPage from "./pages/Authentication";
 import Root from "./pages/Root.js";
 import Feed from "./pages/Feed.js";
-import AllSearchedUsersPage from "./pages/AllSearchedUsersPage.js";
+import AllSearchedUsersPage from "./components/Search/Users/AllSearchedUsersNavPage.js";
 import PostsList from "./components/Profile/NavPages/Posts/PostsList.js";
 import UserProfilePage from "./pages/UserProfilePage.js";
 import Friends from "./components/Profile/NavPages/Friends/Friends.js";
@@ -23,6 +23,9 @@ import ViewPagePostPage from "./pages/ViewPagePostPage.js";
 import AllNotificationNavPage from "./components/Notifications/AllNotificationsNavPage.js";
 import ReadNotificationNavPage from "./components/Notifications/UnreadNotificationsNavPage.js";
 import UnreadNotificationNavPage from "./components/Notifications/UnreadNotificationsNavPage.js";
+import SearchedPagesAndUsersPage from "./pages/SearchedPagesAndUsersPage.js";
+import AllSearchedUsersNavPage from "./components/Search/Users/AllSearchedUsersNavPage.js";
+import SearchPagesNavPage from "./components/Search/Pages/SearchPagesNavPages.js";
 
 const router = createBrowserRouter([
   {
@@ -60,8 +63,18 @@ const router = createBrowserRouter([
         element: <PageFeed />
       },
       {
-        path: "/searchedUsers/:searchText",
-        element: <AllSearchedUsersPage />
+        path: "/searchedUsersAndPages/:searchText",
+        element: <SearchedPagesAndUsersPage />,
+        children: [
+          {
+            index: true,
+            element: <AllSearchedUsersNavPage />
+          },
+          {
+            path: "pages",
+            element: <SearchPagesNavPage />
+          }
+        ]
       },
       {
         path: "help",

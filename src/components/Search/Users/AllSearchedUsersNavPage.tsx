@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import useHttp from "../hooks/useHttp";
-import SearchUserResponse from "../model/response/SearchFriendsResponse";
+import useHttp from "../../../hooks/useHttp";
+import SearchUserResponse from "../../../model/response/SearchFriendsResponse";
 import { useParams } from "react-router-dom";
-import { useLoggedUserInformation } from "../hooks/useLoggedUserInformation";
-import AllSearchedUsers from "../components/SearchUsers/AllSearchedUsers";
+import { useLoggedUserInformation } from "../../../hooks/useLoggedUserInformation";
+import AllSearchedUsers from "./AllSearchedUsers";
 
-const AllSearchedUsersPage = () => {
+const AllSearchedUsersNavPage = () => {
   const [filteredFriends, setFilteredFriends] = useState<SearchUserResponse[]>(
     []
   );
@@ -33,7 +33,7 @@ const AllSearchedUsersPage = () => {
       },
       applyData
     );
-  }, []);
+  }, [params.searchText]);
 
   return (
     <>
@@ -42,4 +42,4 @@ const AllSearchedUsersPage = () => {
   );
 };
 
-export default AllSearchedUsersPage;
+export default AllSearchedUsersNavPage;

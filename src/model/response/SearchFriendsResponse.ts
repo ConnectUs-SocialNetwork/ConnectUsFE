@@ -5,6 +5,8 @@ export class SearchUserResponse {
     email: string;
     profileImage: string;
     friend: boolean;
+    numberOfFriends: number;
+    numberOfMutualFriends: number;
   
     constructor(
       id: number,
@@ -12,7 +14,9 @@ export class SearchUserResponse {
       lastname: string,
       email: string,
       profileImage: string,
-      friend: boolean
+      friend: boolean,
+      numberOfFriends: number,
+      numberOfMutualFriends: number,
     ) {
       this.id = id;
       this.firstname = firstname;
@@ -20,6 +24,8 @@ export class SearchUserResponse {
       this.email = email;
       this.profileImage = profileImage;
       this.friend = friend;
+      this.numberOfFriends = numberOfFriends;
+      this.numberOfMutualFriends = numberOfMutualFriends;
     }
   }
   

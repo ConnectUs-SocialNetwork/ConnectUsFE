@@ -6,7 +6,7 @@ import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { faPager } from "@fortawesome/free-solid-svg-icons";
 import classes from "../../styles/Navigation/NavigationBar.module.css";
 import NavItem from "./NavItem";
-import SearchBar from "../SearchUsers/SearchBar";
+import SearchBar from "../Search/SearchBar";
 import Logo from "../../assets/Logo.png";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 import BlankProfilePicture from "../../assets/BlankProfilePicture.png";

@@ -1,16 +1,16 @@
-import SearchUserResponse from "../../model/response/SearchFriendsResponse";
-import classes from "../../styles/SearchUsers/OneSearchedUser.module.css";
-import BlankPhoto from "../../assets/BlankProfilePicture.png";
-import StyledButton from "../UI/StyledButton";
+import SearchUserResponse from "../../../model/response/SearchFriendsResponse";
+import classes from "../../../styles/SearchUsers/OneSearchedUser.module.css";
+import BlankPhoto from "../../../assets/BlankProfilePicture.png";
+import StyledButton from "../../UI/StyledButton";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
+import { useLoggedUserInformation } from "../../../hooks/useLoggedUserInformation";
 
-interface OneSearchedUserProps {
+interface SearchedUserProps {
   user: SearchUserResponse;
 }
 
-const OneSearchedUser: React.FC<OneSearchedUserProps> = ({ user }) => {
+const SearchedUser: React.FC<SearchedUserProps> = ({ user }) => {
   const userInformation = useLoggedUserInformation();
   const navigate = useNavigate();
 
@@ -35,7 +35,9 @@ const OneSearchedUser: React.FC<OneSearchedUserProps> = ({ user }) => {
         <p className={classes.nameAndSurname}>
           {user.firstname} {user.lastname}
         </p>
-        <p className={classes.isFriend}>{user.friend ? "Friend" : ""}</p>
+        {user.friend &&  <p className={classes.isFriend}>Friend</p>}
+        {!user.friend && <p className={classes.isFriend}>Number of friends: {user.numberOfFriends}</p>}
+        {!user.friend && <p className={classes.isFriend}>Number of mutual friends: {user.numberOfMutualFriends}</p>}
       </div>
       <div className={classes.buttonContainer}>
           <StyledButton
@@ -51,4 +53,4 @@ const OneSearchedUser: React.FC<OneSearchedUserProps> = ({ user }) => {
   );
 };
 
-export default OneSearchedUser;
+export default SearchedUser;

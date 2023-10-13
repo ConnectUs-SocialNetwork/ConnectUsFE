@@ -1,5 +1,5 @@
 import SearchUserResponse from "../../../../model/response/SearchFriendsResponse";
-import OneSearchedUser from "../../../SearchUsers/OneSearchedUser";
+import OneSearchedUser from "../../../Search/Users/SearchedUser";
 import classes from "../../../../styles/Profile/NavPages/Friends/AllUserFriends.module.css";
 
 interface AllSearchedUsersProps {

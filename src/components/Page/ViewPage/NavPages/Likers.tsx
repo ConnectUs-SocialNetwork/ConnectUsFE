@@ -4,7 +4,7 @@ import useHttp from "../../../../hooks/useHttp";
 import SearchUserResponse from "../../../../model/response/SearchFriendsResponse";
 import { useLoggedUserInformation } from "../../../../hooks/useLoggedUserInformation";
 import classes from "../../../../styles/Profile/NavPages/Friends/AllUserFriends.module.css";
-import OneSearchedUser from "../../../SearchUsers/OneSearchedUser";
+import OneSearchedUser from "../../../Search/Users/SearchedUser";
 import NoLikers from "../../NoUsers";
 import LoadingPage from "../../../../pages/LoadingPage";
 

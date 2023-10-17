@@ -5,7 +5,7 @@ export default class UpdateUserRequest {
     email: string;
     gender: string;
     dateOfBirth: string;
-    profileImage: string;
+    profileImage: string | null;
   
     constructor(
       id: number,
@@ -14,7 +14,7 @@ export default class UpdateUserRequest {
       email: string,
       gender: string,
       dateOfBirth: string,
-      profileImage: string
+      profileImage: string | null
     ) {
       this.id = id;
       this.firstname = firstname;

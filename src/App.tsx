@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthenticationPage from "./pages/Authentication";
 import Root from "./pages/Root.js";
 import Feed from "./pages/Feed.js";
-import AllSearchedUsersPage from "./components/Search/Users/AllSearchedUsersNavPage.js";
 import PostsList from "./components/Profile/NavPages/Posts/PostsList.js";
 import UserProfilePage from "./pages/UserProfilePage.js";
 import Friends from "./components/Profile/NavPages/Friends/Friends.js";
@@ -11,7 +10,6 @@ import MutualFriends from "./components/Profile/NavPages/Friends/MutualFriends.j
 import MyProfilePage from "./pages/MyProfilePage.js";
 import MyFriends from "./components/MyProfile/NavPages/Friends/MyFriends.js";
 import MyPostsList from "./components/MyProfile/NavPages/Posts/MyPostsList.js";
-import EditProfileForm from "./components/Page/CreatePageForm.js";
 import CreatePageForm from "./components/Page/CreatePageForm.js";
 import ViewPage from "./pages/ViewPage.js";
 import PagePostsList from "./components/Page/ViewPage/NavPages/PagePostsList.js";
@@ -21,12 +19,12 @@ import NotificationsPage from "./pages/NotificationsPage.js";
 import ViewPostPage from "./pages/ViewPostPage.js";
 import ViewPagePostPage from "./pages/ViewPagePostPage.js";
 import AllNotificationNavPage from "./components/Notifications/AllNotificationsNavPage.js";
-import ReadNotificationNavPage from "./components/Notifications/UnreadNotificationsNavPage.js";
 import UnreadNotificationNavPage from "./components/Notifications/UnreadNotificationsNavPage.js";
 import SearchedPagesAndUsersPage from "./pages/SearchedPagesAndUsersPage.js";
 import AllSearchedUsersNavPage from "./components/Search/Users/AllSearchedUsersNavPage.js";
 import SearchPagesNavPage from "./components/Search/Pages/SearchPagesNavPages.js";
 import EditPage from "./pages/EditPage.js";
+import EditProfilePage from "./pages/EditProfilePage.js";
 
 const router = createBrowserRouter([
   {
@@ -78,8 +76,8 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: "help",
-        element: <EditProfileForm />
+        path: "editProfile/:userId",
+        element: <EditProfilePage />
       },
       {
         path: "createPage",

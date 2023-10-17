@@ -1,7 +1,7 @@
 import { faUserPen } from "@fortawesome/free-solid-svg-icons";
 import classes from "../../../styles/Profile/Header/Actions.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useLoggedUserInformation } from "../../../hooks/useLoggedUserInformation";
 import * as base64 from "base64-js";
 import TokensResponse from "../../../model/response/TokensResponse";
@@ -9,6 +9,8 @@ import UserResponse from "../../../model/response/UserResponse";
 import LoginResponse from "../../../model/response/LoginResponse";
 import useHttp from "../../../hooks/useHttp";
 import UpdateUserRequest from "../../../model/request/UpdateUserRequest";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 interface ActionsProps{
   onChangeUser: () => void
@@ -16,9 +18,9 @@ interface ActionsProps{
 
 const Actions: React.FC<ActionsProps> = ({onChangeUser}) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const userInformations = useLoggedUserInformation();
   const { isLoading, sendRequest } = useHttp();
+  const navigate = useNavigate()
 
   const applyData = (userResponse: UserResponse) => {
     const tokensResponse = new TokensResponse(
@@ -56,7 +58,6 @@ const Actions: React.FC<ActionsProps> = ({onChangeUser}) => {
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
-      setSelectedImage(selectedFile);
       const reader = new FileReader();
       reader.onload = (event) => {
         const result = event.target?.result;
@@ -92,15 +93,15 @@ const Actions: React.FC<ActionsProps> = ({onChangeUser}) => {
 
   return (
     <div className={classes.headerActions}>
-      <button className={classes.button}>
+      <button className={classes.button} disabled={isLoading} onClick={() => {navigate("/editProfile/" + userInformations?.user.id)}}>
         <>
           <FontAwesomeIcon icon={faUserPen} size="xl" />
           <p className={classes.p}>Edit profile</p>
         </>
       </button>
-      <button className={classes.button} onClick={handleButtonClick}>
+      <button className={classes.button} onClick={handleButtonClick} disabled={isLoading}>
         <>
-          <FontAwesomeIcon icon={faUserPen} size="xl" />
+          <FontAwesomeIcon icon={faImage} size="xl" />
           <p className={classes.p}>Change picture</p>
         </>
       </button>

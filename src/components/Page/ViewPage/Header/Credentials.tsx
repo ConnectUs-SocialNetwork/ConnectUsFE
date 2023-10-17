@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as base64 from "base64-js";
 import UpdatePageRequest from "../../../../model/request/UpdatePageRequest";
 import PageResponse from "../../../../model/response/PageResponse";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
 
 interface CredentialsProps {
   id: number;
@@ -175,7 +176,7 @@ const Credentials: React.FC<CredentialsProps> = (props) => {
             <div className={classes.headerActions}>
               <button className={classes.button} onClick={handleButtonClick}>
                 <>
-                  <FontAwesomeIcon icon={faPenToSquare} size="xl" />
+                  <FontAwesomeIcon icon={faImage} size="xl" />
                   <p className={classes.p}>Change picture</p>
                 </>
               </button>

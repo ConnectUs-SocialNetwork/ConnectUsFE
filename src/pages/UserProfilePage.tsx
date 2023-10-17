@@ -40,9 +40,7 @@ const UserProfilePage = () => {
       <ProfileHeader
         id={userData?.id!}
         imageSrc={
-          userData?.profilePicture === ""
-            ? BlankProfilePicture
-            : userData?.profilePicture!
+          userData?.profilePicture!
         }
         firstaname={userData?.firstname!}
         lastname={userData?.lastname!}

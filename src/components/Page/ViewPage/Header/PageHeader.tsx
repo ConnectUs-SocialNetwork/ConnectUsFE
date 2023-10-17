@@ -3,6 +3,7 @@ import classes from '../../../../styles/Profile/Header/ProfileHeader.module.css'
 import Credentials from "./Credentials";
 
 interface PageHeaderProps{
+    id: number;
     name: string;
     description: string;
     numberOfLikes: number;
@@ -14,7 +15,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 
     return <div className={classes.profileHeaderContainer}>
         <Image imageSrc={props.imageSrc}/>
-        <Credentials name={props.name} numberOfLikes={props.numberOfLikes} description={props.description} liked={props.liked} />
+        <Credentials id={props.id} name={props.name} numberOfLikes={props.numberOfLikes} description={props.description} liked={props.liked} />
     </div>
 }
 

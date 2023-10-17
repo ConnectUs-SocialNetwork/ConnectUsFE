@@ -29,7 +29,7 @@ const PostComponent: React.FC<PostProps> = ({ post }) => {
           firstname={post.firstname}
           lastname={post.lastname}
           userId={post.userId}
-          profilePicture={""}
+          profilePicture={post.profileImage}
         />
         <PostText text={post.text} />
         {post.imageInBase64 !== "" && (

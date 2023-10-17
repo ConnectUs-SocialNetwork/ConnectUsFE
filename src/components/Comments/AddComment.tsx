@@ -42,16 +42,17 @@ const AddComment: React.FC<AddCommentProps> = (props) => {
     );
   };
 
+  var imageInBase64;
+
+  if (props.imageSrc) {
+    imageInBase64 = "data:image/jpeg;base64," + props.imageSrc;
+  } else {
+    imageInBase64 = BlankProfilePicture;
+  }
+
   return (
     <div className={classes.addCommentContainer}>
-      <img
-        src={
-          props.imageSrc === null
-            ? BlankProfilePicture
-            : props.imageSrc
-        }
-        className={classes.img}
-      />
+      <img src={imageInBase64} className={classes.img} />
 
       <input
         type="text"

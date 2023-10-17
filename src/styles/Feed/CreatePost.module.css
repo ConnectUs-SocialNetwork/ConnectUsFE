@@ -26,10 +26,12 @@
     margin-right: 7px;
   }
   
-  .avatar {
+  .avatar{
     width: 40px;
     height: 40px;
-    border-radius: 50%; /* Zaobljeni avatar */
+    border-radius: 50%;
+    object-fit: cover; /* Ovo će osigurati da se slika popuni na najbolji način */
+    object-position: center center; /* Ovo će postaviti centar slike na centar kontejnera */
   }
   
   /* Stil za dugme za otvaranje modala */

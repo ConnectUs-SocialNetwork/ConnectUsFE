@@ -9,6 +9,7 @@ import useHttp from "../../hooks/useHttp";
 import Post from "../../model/response/Post";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 import PagePost from "../../model/response/PagePostResponse";
+import BlankProfilePicture from '../../assets/BlankProfilePicture.png'
 
 interface OpenDialogData {
   isOpen: boolean;
@@ -73,6 +74,14 @@ const CreatePost: React.FC<CreatePostProps> = ({onCreatePost, onCreatePagePost, 
     setDialogData({isOpen: false, type: 'Post'});
   }
 
+  var imageInBase64;
+
+  if(userInformation?.user.profileImage){
+    imageInBase64 = 'data:image/jpeg;base64,' + userInformation?.user.profileImage;
+  }else{
+    imageInBase64 = BlankProfilePicture;
+  }
+
   return (
     <div className={classes.createPostContainer}>
       {dialogData.isOpen && (
@@ -86,7 +95,7 @@ const CreatePost: React.FC<CreatePostProps> = ({onCreatePost, onCreatePagePost, 
       )}
       <div className={classes["post-form-container"]}>
         <div className={classes["avatar-container"]}>
-          <img src={userInformation?.user.profileImage === null ? ProfileImg : userInformation?.user.profileImage} alt="User Avatar" className={classes["avatar"]} />
+          <img src={imageInBase64} alt="User Avatar" className={classes["avatar"]} />
         </div>
         <button
           className={classes["open-modal-button"]}

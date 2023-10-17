@@ -29,7 +29,7 @@ const PagePostComponent: React.FC<PagePostProps> = ({ post }) => {
         time={post.dateAndTime}
         name={post.name}
         pageId={post.pageId}
-        profilePicture={""}
+        profilePicture={post.profileImage}
       />
       <PostText text={post.text} />
       {post.imageInBase64 !== "" && (

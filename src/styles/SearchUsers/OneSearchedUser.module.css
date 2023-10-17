@@ -26,6 +26,8 @@
   border-radius: 50%;
   margin-top: 5px;
   margin-left: 10px;
+  object-fit: cover; /* Ovo će osigurati da se slika popuni na najbolji način */
+  object-position: center center;
 }
 
 .nameAndSurname {

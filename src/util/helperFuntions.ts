@@ -1,5 +1,6 @@
 import Post from "../model/response/Post";
 import Posts from "../model/response/PostsResponse";
+import * as dayjs from 'dayjs';
 
 export function imageToBase64(imageFile: File): Promise<string> {
   return new Promise<string>((resolve, reject) => {
@@ -134,4 +135,24 @@ export function getCurrentDateTimeString() {
   const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
   
   return formattedDateTime;
+}
+
+export function parseDate(dateString: string): Date | null {
+  const regex = /(\d+)\s+([A-Za-z]+)\s+(\d+)/;
+  const match = dateString.match(regex);
+
+  if (match) {
+    const day = parseInt(match[1], 10);
+    const month = match[2];
+    const year = parseInt(match[3], 10);
+
+    const formattedDate = `${month} ${day} ${year}`;
+    const parsedDate = dayjs(formattedDate, { locale: 'en' });
+
+    if (parsedDate.isValid()) {
+      return parsedDate.toDate();
+    }
+  }
+
+  return null;
 }

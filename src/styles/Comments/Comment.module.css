@@ -11,11 +11,13 @@
 }
 
 .profileImage{
-    border-radius: 50%;
     width: 40px;
     height: 40px;
+    border-radius: 50%;
+    object-fit: cover; /* Ovo će osigurati da se slika popuni na najbolji način */
+    object-position: center center; /* Ovo će postaviti centar slike na centar kontejnera */
     margin-right: 15px;
-}
+  }
 
 .commentContentContainer{
     border-radius: 10px;

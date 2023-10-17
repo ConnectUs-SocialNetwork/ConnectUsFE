@@ -26,6 +26,7 @@ import UnreadNotificationNavPage from "./components/Notifications/UnreadNotifica
 import SearchedPagesAndUsersPage from "./pages/SearchedPagesAndUsersPage.js";
 import AllSearchedUsersNavPage from "./components/Search/Users/AllSearchedUsersNavPage.js";
 import SearchPagesNavPage from "./components/Search/Pages/SearchPagesNavPages.js";
+import EditPage from "./pages/EditPage.js";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "createPage",
         element: <CreatePageForm />
+      },
+      {
+        path: "editPage/:pageId",
+        element: <EditPage />
       },
       {
         path: "viewPost/:postId",

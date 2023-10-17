@@ -17,6 +17,15 @@ import { useNavigate } from "react-router-dom";
 const NavBar = () => {
   const navigate = useNavigate();
   const { sendRequest: savePostRequest } = useHttp(); 
+  const userInformation = useLoggedUserInformation();
+
+  var imageInBase64;
+
+  if (userInformation?.user.profileImage) {
+    imageInBase64 = "data:image/jpeg;base64," + userInformation?.user.profileImage;
+  } else {
+    imageInBase64 = BlankProfilePicture;
+  }
 
   const handleLogout = () => {
 
@@ -35,7 +44,6 @@ const NavBar = () => {
     console.log(data)
     navigate('/auth?mode=login')
   }
-  const userInformation = useLoggedUserInformation();
   //<NavItem iconType={faUserGroup} text="Network" to="/my-network" />
   return (
     <div className={classes.navContainer}>
@@ -52,11 +60,11 @@ const NavBar = () => {
         <img
           className={classes.profilePicture}
           src={
-            userInformation?.user.profileImage === null
-              ? BlankProfilePicture
-              : userInformation?.user.profileImage
+            imageInBase64
           }
           onClick={() => {navigate('/viewMyProfile')}}
+
+          alt="profile picture"
         />
         <NavButton
           iconType={faFileCirclePlus}

@@ -10,6 +10,7 @@ import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 import PagePostRequest from "../../model/request/PagePostRequest";
 import PagePost from "../../model/response/PagePostResponse";
 import { useParams } from "react-router-dom";
+import BlankProfilePicture from '../../assets/BlankProfilePicture.png'
 
 interface OpenDialogData {
   isOpen: boolean;
@@ -18,9 +19,10 @@ interface OpenDialogData {
 
 interface CreatePostProps {
   onCreatePost: (post: PagePost) => void;
+  avatar: string;
 }
 
-const CreatePost: React.FC<CreatePostProps> = ({ onCreatePost }) => {
+const CreatePost: React.FC<CreatePostProps> = ({ onCreatePost, avatar }) => {
   const userInformation = useLoggedUserInformation();
   const [dialogData, setDialogData] = useState<OpenDialogData>({
     isOpen: false,
@@ -55,6 +57,14 @@ const CreatePost: React.FC<CreatePostProps> = ({ onCreatePost }) => {
     setDialogData({ isOpen: false, type: "Post" });
   };
 
+  var imageInBase64;
+
+  if (avatar) {
+    imageInBase64 = "data:image/jpeg;base64," + avatar;
+  } else {
+    imageInBase64 = BlankProfilePicture;
+  }
+
   return (
     <div className={classes.createPostContainer}>
       {dialogData.isOpen && (
@@ -69,11 +79,9 @@ const CreatePost: React.FC<CreatePostProps> = ({ onCreatePost }) => {
         <div className={classes["avatar-container"]}>
           <img
             src={
-              userInformation?.user.profileImage === null
-                ? ProfileImg
-                : userInformation?.user.profileImage
+              imageInBase64
             }
-            alt="User Avatar"
+            alt="Page Avatar"
             className={classes["avatar"]}
           />
         </div>

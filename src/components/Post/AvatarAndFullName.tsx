@@ -22,10 +22,18 @@ const AvatarAndFullName:React.FC<PropsData> = (props) => {
   let timeAgo = calculateTimeAgo1(parsedDateTime);
   const formattedDate = formatDate(props.time);
 
+  var imageInBase64;
+
+  if (props.profilePicture) {
+    imageInBase64 = "data:image/jpeg;base64," + props.profilePicture;
+  } else {
+    imageInBase64 = BlankProfilePicture;
+  }
+
   return (
     <div className={classes["avatar-container"]}>
       <div>
-        <img src={props.profilePicture === "" ? BlankProfilePicture : props.profilePicture} alt="User Avatar" className={classes["avatar"]} />
+        <img src={imageInBase64} alt="User Avatar" className={classes["avatar"]} />
       </div>
       <div>
         <p className={classes.nameAndSurname}>

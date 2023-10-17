@@ -34,6 +34,7 @@ const ViewPage = () => {
   return (
     <div className={classes.viewUserProfileContainer}>
       <PageHeader
+        id={pageInformation?.pageId!}
         imageSrc={
           pageInformation?.avatar === ""
             ? BlankProfilePicture

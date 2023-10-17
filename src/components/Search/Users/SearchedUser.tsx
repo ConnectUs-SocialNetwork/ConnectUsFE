@@ -5,14 +5,22 @@ import StyledButton from "../../UI/StyledButton";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useLoggedUserInformation } from "../../../hooks/useLoggedUserInformation";
+import { useEffect, useState } from "react";
 
 interface SearchedUserProps {
   user: SearchUserResponse;
 }
 
 const SearchedUser: React.FC<SearchedUserProps> = ({ user }) => {
+  const [isMyProfile, setIsMyProfiile] = useState(false);
   const userInformation = useLoggedUserInformation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(user.id === userInformation?.user.id){
+      setIsMyProfiile(true);
+    }
+  }, [])
 
   const handleViewProfile = () => {
     if(userInformation?.user.id == user.id){
@@ -22,11 +30,19 @@ const SearchedUser: React.FC<SearchedUserProps> = ({ user }) => {
     }
   }
 
+  var imageInBase64;
+
+  if (user.profileImage) {
+    imageInBase64 = "data:image/jpeg;base64," + user.profileImage;
+  } else {
+    imageInBase64 = BlankPhoto;
+  }
+
   return (
     <div className={classes.oneSearchedUserContainer}>
       <div className={classes.avatar}>
         <img
-          src={user.profileImage ? user.profileImage : BlankPhoto}
+          src={imageInBase64}
           alt="User Avatar"
           className={classes["avatar"]}
         />
@@ -36,8 +52,8 @@ const SearchedUser: React.FC<SearchedUserProps> = ({ user }) => {
           {user.firstname} {user.lastname}
         </p>
         {user.friend &&  <p className={classes.isFriend}>Friend</p>}
-        {!user.friend && <p className={classes.isFriend}>Number of friends: {user.numberOfFriends}</p>}
-        {!user.friend && <p className={classes.isFriend}>Number of mutual friends: {user.numberOfMutualFriends}</p>}
+        {!isMyProfile && !user.friend && <p className={classes.isFriend}>Number of friends: {user.numberOfFriends === null || 0 ? 0 : user.numberOfFriends}</p>}
+        {!isMyProfile && !user.friend && <p className={classes.isFriend}>Number of mutual friends: {user.numberOfMutualFriends=== null || 0 ? 0 : user.numberOfMutualFriends}</p>}
       </div>
       <div className={classes.buttonContainer}>
           <StyledButton

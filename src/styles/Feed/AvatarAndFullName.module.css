@@ -5,10 +5,12 @@
     margin-left: 15px;
   }
   
-  .avatar {
+  .avatar{
     width: 45px;
     height: 45px;
-    border-radius: 50%; /* Zaobljeni avatar */
+    border-radius: 50%;
+    object-fit: cover; /* Ovo će osigurati da se slika popuni na najbolji način */
+    object-position: center center; /* Ovo će postaviti centar slike na centar kontejnera */
   }
   
   .nameAndSurname{

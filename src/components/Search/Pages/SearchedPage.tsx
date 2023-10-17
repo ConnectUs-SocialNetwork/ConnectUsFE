@@ -71,15 +71,18 @@ const SearchedPage: React.FC<SearchedPageProps> = ({ page }) => {
       );
     }
   };
+  var imageInBase64;
+
+  if (page.avatar) {
+    imageInBase64 = "data:image/jpeg;base64," + page.avatar;
+  } else {
+    imageInBase64 = BlankProfilePicture;
+  }
   return (
     <div className={classes.oneSearchedPageContainer} onClick={() => {navigate("/viewPage/" + page.id + "/" + page.administratorId)}}>
       <div className={classes.avatar}>
         <img
-          src={
-            page.avatar === "" || page.avatar === null
-              ? BlankProfilePicture
-              : page.avatar
-          }
+          src={imageInBase64}
           alt="Page Avatar"
           className={classes["avatar"]}
         />

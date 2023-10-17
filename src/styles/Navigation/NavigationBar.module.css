@@ -41,6 +41,8 @@
   width: 35px;
   height: 35px;
   border-radius: 50%;
+  object-fit: cover; /* Ovo će osigurati da se slika popuni na najbolji način */
+  object-position: center center; /* Ovo će postaviti centar slike na centar kontejnera */
 }
 
 .profilePicture:hover{

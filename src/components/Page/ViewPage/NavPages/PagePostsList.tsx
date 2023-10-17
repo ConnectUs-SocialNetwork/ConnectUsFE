@@ -10,14 +10,14 @@ import PagePost from "../../../../model/response/PagePostResponse";
 import CreatePost from "../../../PagePost/CreatePost";
 
 const PagePostsList = () => {
-  const [posts, setPosts] = useState<Posts>(new Posts([]));
+  const [posts, setPosts] = useState<Posts>(new Posts([], ""));
   const { isLoading, sendRequest: sendGetPostsRequest } = useHttp();
   const userInformation = useLoggedUserInformation();
   const params = useParams();
 
   const applyData = (posts: Posts) => {
     if (posts === undefined) {
-      setPosts(new Posts([]));
+      setPosts(new Posts([], ""));
     } else {
       setPosts(posts);
     }
@@ -42,7 +42,7 @@ const PagePostsList = () => {
   }, []);
 
   const addPostToPostsList = (post: PagePost) => {
-    setPosts((prevPosts) => new Posts([post, ...prevPosts.posts]));
+    setPosts((prevPosts) => new Posts([post, ...prevPosts.posts], prevPosts.avatar));
   };
 
   return (
@@ -56,6 +56,7 @@ const PagePostsList = () => {
                 onCreatePost={(post: PagePost) => {
                   addPostToPostsList(post);
                 }}
+                avatar={posts.avatar}
               />
             </div>
           )}

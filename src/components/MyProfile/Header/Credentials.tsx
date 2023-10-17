@@ -5,8 +5,7 @@ const Credentials = () => {
     const userInformation = useLoggedUserInformation();
 
     return <div className={classes.credentialsContainer}>
-        <p className={classes.nameAndSurname}>{userInformation?.user.firstname} {userInformation?.user.lastname}</p>
-    </div>
+        <p className={classes.nameAndSurname}>{userInformation?.user.firstname} {userInformation?.user.lastname}</p></div>
 }
 
 export default Credentials;

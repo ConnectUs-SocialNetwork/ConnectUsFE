@@ -3,7 +3,7 @@ export default class UserResponse {
   firstname: string;
   lastname: string;
   email: string;
-  dateOfBirth: Date;
+  dateOfBirth: string;
   gender: string;
   profileImage: string;
 
@@ -12,7 +12,7 @@ export default class UserResponse {
     firstname: string,
     lastname: string,
     email: string,
-    dateOfBirth: Date,
+    dateOfBirth: string,
     gender: string,
     image: string
   ) {

@@ -1,11 +1,11 @@
 export default class PostRequest{
     userEmail: string;
-    imageInBase64: string;
+    images: string[];
     postText: string;
 
-    constructor(email: string, image: string, text: string){
+    constructor(email: string, images: string[], text: string){
         this.userEmail = email;
-        this.imageInBase64 = image;
+        this.images = images;
         this.postText = text;
     }
 }

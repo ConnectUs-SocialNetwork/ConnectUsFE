@@ -52,7 +52,6 @@
   border-color: #e1e0e0;
 }
 
-
 @media (min-width: 768px) {
   .modal {
     left: calc(50% - 20rem);
@@ -60,7 +59,7 @@
   }
 }
 
-.avatar-container{
+.avatar-container {
   display: flex;
   background-color: white;
   width: 50%;
@@ -70,9 +69,11 @@
   width: 50px;
   height: 50px;
   border-radius: 50%; /* Zaobljeni avatar */
+  object-fit: cover; /* Ovo će osigurati da se slika popuni na najbolji način */
+  object-position: center center;
 }
 
-.p{
+.p {
   margin-left: 15px;
   margin-top: 10px;
   font-size: 17px;
@@ -137,9 +138,7 @@
   background-color: rgb(49, 49, 222);
 }
 
-.button:disabled{
+.button:disabled {
   cursor: auto;
   background-color: rgb(184, 183, 183);
 }
-
-

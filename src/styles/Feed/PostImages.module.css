@@ -1,0 +1,24 @@
+.imagesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Razmak između slika */
+  }
+  
+  .imageContainer {
+    width: auto; /* Prilagodite širinu okvira slika prema potrebi */
+    height: auto; /* Prilagodite visinu okvira slika prema potrebi */
+    overflow: hidden;
+    background-color: rgb(51, 44, 44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .imageContainer img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  

@@ -8,6 +8,8 @@ import Post from "../../model/response/Post";
 import AddComment from "../Comments/AddComment";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 import CommentResponse from "../../model/response/CommentResponse";
+import PostImages from "./PostImages";
+import ImageSlider from "./ImageSlider";
 
 interface PostProps {
   post: Post;
@@ -15,11 +17,13 @@ interface PostProps {
 
 const PostComponent: React.FC<PostProps> = ({ post }) => {
   const userInformation = useLoggedUserInformation();
-  const [numberOfComments, setNumberOfComments] = useState(post.numberOfComments)
+  const [numberOfComments, setNumberOfComments] = useState(
+    post.numberOfComments
+  );
 
   const addComment = (data: CommentResponse) => {
-    setNumberOfComments((prevState) => prevState + 1)
-  }
+    setNumberOfComments((prevState) => prevState + 1);
+  };
 
   return (
     <>
@@ -32,9 +36,7 @@ const PostComponent: React.FC<PostProps> = ({ post }) => {
           profilePicture={post.profileImage}
         />
         <PostText text={post.text} />
-        {post.imageInBase64 !== "" && (
-          <PostImage imageSrc={post.imageInBase64} altText="slika" />
-        )}
+        {post.images.length !== 0 && <ImageSlider images={post.images} />}
         <PostActions
           postId={post.id}
           liked={post.liked}

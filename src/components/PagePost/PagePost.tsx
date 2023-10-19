@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import AvatarAndFullName from "./AvatarAndFullName";
 import classes from "../../styles/Feed/Post.module.css";
 import PostText from "../Post/PostText";
-import PostImage from "../Post/PostImage";
 import PagePost from "../../model/response/PagePostResponse";
 import AddComment from "../Comments/AddComment";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 import PostActions from "./PostActions";
 import CommentResponse from "../../model/response/CommentResponse";
+import ImageSlider from "../Post/ImageSlider";
 
 interface PagePostProps {
   post: PagePost;
@@ -32,8 +32,8 @@ const PagePostComponent: React.FC<PagePostProps> = ({ post }) => {
         profilePicture={post.profileImage}
       />
       <PostText text={post.text} />
-      {post.imageInBase64 !== "" && (
-        <PostImage imageSrc={post.imageInBase64} altText="slika" />
+      {post.images.length !== 0 && (
+        <ImageSlider images={post.images} />
       )}
       <PostActions
         postId={post.postId}

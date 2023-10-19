@@ -1,0 +1,64 @@
+/* ImageSlider.module.css */
+
+.sliderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Prilagodite širinu prema potrebama */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.imageContainer {
+  width: 590px; /* Širina okvira diva */
+  height: 400px; /* Visina okvira diva */
+  display: flex;
+  align-items: center; /* Centriranje vertikalno */
+  justify-content: center; /* Centriranje horizontalno */
+  overflow: hidden; /* Skrivanje dijelova slike koji izlaze iz okvira */
+  background-color: rgb(51, 44, 44); /* Dodajte crnu pozadinu oko slike */
+}
+
+.imageInBase64 {
+  max-width: 600px;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* Slika će ispuniti cijeli kontejner */
+}
+
+.navigation {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.prevButton,
+.nextButton {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 8px;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prevButton {
+  margin-left: 8px; /* Postavite razmak između dugmadi na desnu stranu */
+}
+
+.nextButton {
+  margin-left: auto; /* Postavite dugme "Next" na desnu stranu */
+}

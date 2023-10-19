@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-
 import Card from "../UI/Card";
 import classes from "../../styles/Feed/PostModal.module.css";
 import BlankProfilePicture from "../../assets/BlankProfilePicture.png";
@@ -26,6 +25,7 @@ interface ModalOverlayProps {
 const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
   const [postText, setPostText] = useState("");
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [selectedImages, setSelectedImages] = useState<File[] | null>(null);
 
   const [isDisabled, setIsDisabled] = useState(true);
 
@@ -41,11 +41,17 @@ const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
-      setSelectedImage(selectedFile);
+      setSelectedImages((prevState) => {
+        if (prevState === null) {
+          return [selectedFile];
+        } else {
+          return [...prevState, selectedFile];
+        }
+      });
       setIsDisabled(false);
     }
 
-    if (selectedImage) {
+    if (selectedImages) {
       setIsDisabled(false);
     }
   };
@@ -60,46 +66,66 @@ const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
     setPostText(event.target.value);
     if (event.target.value !== "") {
       setIsDisabled(false);
-    } else if (event.target.value === "" && selectedImage === null) {
+    } else if (event.target.value === "" && selectedImages === null) {
       setIsDisabled(true);
     }
   };
 
-  const handleCreatePost = () => {
-    if (selectedImage) {
+  const handleCreatePost = async () => {
+    var images: string[] = [];
+    if (selectedImages) {
+      // Kreirajmo Promise za svaku sliku i sačekajmo da se svi završe pre nego što nastavimo
+      await Promise.all(selectedImages.map(async (image) => {
+        if (image) {
+          const encodedImage = await readImageAsBase64(image);
+          images.push(encodedImage);
+        }
+      }));
+    }
+  
+    const postRequest = new PagePostRequest(
+      props.pageId,
+      images,
+      postText
+    );
+  
+    props.onConfirm(postRequest);
+  };
+  
+  // Funkcija za čitanje slike kao base64
+  const readImageAsBase64 = (image: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
       const reader = new FileReader();
+  
       reader.onload = (event) => {
         const result = event.target?.result;
         if (result && typeof result === "object") {
-          // Konvertujemo rezultat u Uint8Array
           const buffer = new Uint8Array(result);
-          // Enkodiranje slike u base64
           const encodedImage = base64.fromByteArray(buffer);
-          let postData = new PagePostRequest(
-            props.pageId,
-            encodedImage,
-            postText
-          );
-          props.onConfirm(postData);
+          resolve(encodedImage);
+        } else {
+          reject(new Error("Nemoguće učitati sliku."));
         }
       };
-      reader.readAsArrayBuffer(selectedImage);
-    } else {
-      let postData = new PagePostRequest(props.pageId, "", postText);
-      props.onConfirm(postData);
-    }
+  
+      reader.readAsArrayBuffer(image);
+    });
   };
+
+  var imageInBase64;
+
+  if (userInformation.user.profileImage) {
+    imageInBase64 = "data:image/jpeg;base64," + userInformation.user.profileImage;
+  } else {
+    imageInBase64 = BlankProfilePicture;
+  }
 
   return (
     <Card className={classes.modal}>
       <header className={classes.header}>
         <div className={classes["avatar-container"]}>
           <img
-            src={
-              userInformation.user.profileImage === null
-                ? BlankProfilePicture
-                : userInformation.user.profileImage
-            }
+            src={imageInBase64}
             alt="User Avatar"
             className={classes["avatar"]}
           />

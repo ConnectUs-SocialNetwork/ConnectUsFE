@@ -16,28 +16,29 @@ interface ActionsProps{
   onChangeUser: () => void
 }
 
-const Actions: React.FC<ActionsProps> = ({onChangeUser}) => {
+const Actions: React.FC<ActionsProps> = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const userInformations = useLoggedUserInformation();
   const { isLoading, sendRequest } = useHttp();
   const navigate = useNavigate()
+  console.log(userInformations)
 
-  const applyData = (userResponse: UserResponse) => {
+  const applyData = (userResponse: any) => {
     const tokensResponse = new TokensResponse(
       userInformations?.tokens.accessToken!,
       userInformations?.tokens.refreshToken!
     );
 
     const message = userInformations?.message!;
+    const user = new UserResponse(userResponse.userResponse.id, userResponse.userResponse.firstname, userResponse.userResponse.lastname, userResponse.userResponse.email, userResponse.userResponse.dateOfBirth, userResponse.userResponse.gender, userResponse.userResponse.profileImage) 
 
     const loginResponse = new LoginResponse(
       tokensResponse,
-      userResponse,
+      user,
       message
     );
     localStorage.setItem("loginResponse", JSON.stringify(loginResponse));
     window.location.reload();
-
   };
 
   const sendUpdateUserRequest = (requestData: UpdateUserRequest) => {

@@ -3,16 +3,16 @@ export default class PagePost {
     pageId: number;
     name: string;
     profileImage: string;
-    imageInBase64: string;
+    images: string[];
     text: string;
     dateAndTime: string;
     liked: boolean;
     numberOfLikes: number;
     numberOfComments: number;
 
-    constructor(id: number, commentators: number, profileImage: string, userId: number, firstname: string, imageInBase64: string, text: string, dateAndTime: string, isLiked: boolean, likes: number) {
+    constructor(id: number, commentators: number, profileImage: string, userId: number, firstname: string, imageInBase64: string[], text: string, dateAndTime: string, isLiked: boolean, likes: number) {
         this.postId = id;
-        this.imageInBase64 = imageInBase64;
+        this.images = imageInBase64;
         this.text = text;
         this.dateAndTime = dateAndTime;
         this.liked = isLiked;

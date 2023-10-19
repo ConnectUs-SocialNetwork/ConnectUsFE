@@ -25,6 +25,9 @@ import AllSearchedUsersNavPage from "./components/Search/Users/AllSearchedUsersN
 import SearchPagesNavPage from "./components/Search/Pages/SearchPagesNavPages.js";
 import EditPage from "./pages/EditPage.js";
 import EditProfilePage from "./pages/EditProfilePage.js";
+import PhotosNavPage from "./components/MyProfile/NavPages/Photos/PhotosNavPage.js";
+import Photos from "./components/MyProfile/NavPages/Photos/Photos.js";
+import PagePhotos from "./components/Page/ViewPage/NavPages/PagePhotos.js";
 
 const router = createBrowserRouter([
   {
@@ -106,6 +109,10 @@ const router = createBrowserRouter([
           {
             path: "likes",
             element: <Likers />
+          },
+          {
+            path: "photos",
+            element: <PagePhotos/>
           }
         ]
       },
@@ -144,7 +151,16 @@ const router = createBrowserRouter([
           {
             path: "friends",
             element: <MyFriends />,
-            
+          },
+          {
+            path: "photos",
+            element: <Photos />,
+            children: [
+              {
+                index: true,
+                element: <PhotosNavPage />
+              }
+            ]
           }
         ]
       }

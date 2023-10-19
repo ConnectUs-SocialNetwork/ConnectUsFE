@@ -93,17 +93,21 @@ const Notification: React.FC<NotificationProps> = ({
     );
   };
 
+  var imageInBase64;
+
+  if(notification.avatar){
+    imageInBase64 = 'data:image/jpeg;base64,' + notification.avatar;
+  }else{
+    imageInBase64 = BlankProfilePicture;
+  }
+
   if (notification.type === "FRIEND_REQUEST") {
     content = (
       <div className={classes.notificationContainer} onClick={handleClick}>
         <div>
           <img
             className={classes.notificationAvatar}
-            src={
-              notification.avatar === "" || notification.avatar === null
-                ? BlankProfilePicture
-                : notification.avatar
-            }
+            src={imageInBase64}
           />
         </div>
         <div>
@@ -151,11 +155,7 @@ const Notification: React.FC<NotificationProps> = ({
         <div>
           <img
             className={classes.notificationAvatar}
-            src={
-              notification.avatar === "" || notification.avatar === null
-                ? BlankProfilePicture
-                : notification.avatar
-            }
+            src={imageInBase64}
           />
         </div>
         <div>

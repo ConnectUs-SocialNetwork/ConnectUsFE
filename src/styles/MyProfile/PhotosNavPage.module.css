@@ -1,0 +1,24 @@
+.userImages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Razmak između slika */
+    max-width: 1200px; /* Maksimalna širina komponente */
+    margin: 0 auto; /* Centriranje komponente */
+  }
+  
+  .imageWrapper {
+    width: calc(33.33% - 10px); /* Postavlja širinu na 1/3 širine komponente s razmakom između */
+    margin-bottom: 10px; /* Razmak ispod svake slike */
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  img {
+    width: 100%; /* Slika će popuniti cijeli prostor roditeljskog diva */
+    max-height: auto; /* Maksimalna visina slike (prilagodite prema svojim potrebama) */
+    object-fit: cover; /* Slika će se prilagoditi dimenzijama roditeljskog diva */
+    border-radius: 10px;
+  }
+  

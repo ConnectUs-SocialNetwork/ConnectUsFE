@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import classes from "../../styles/Authentication/SignUpForm.module.css";
 import {
   validateEmail,
+  validateEmptyString,
   validateLastname,
   validateName,
   validatePassword,
@@ -20,6 +21,10 @@ const SignupFrom = () => {
   const [lastname, setLastname] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [gender, setGender] = useState("Male");
+  const [country, setCountry] = useState("")
+  const [city, setCity] = useState("")
+  const [street, setStreet] = useState("")
+  const [number, setNumber] = useState("")
 
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -28,6 +33,10 @@ const SignupFrom = () => {
   const [lastnameError, setLastnameError] = useState("");
   const [dateOfBirthError, setDateOfBirthError] = useState("");
   const [genderError, setGenderError] = useState("");
+  const [countryError, setCountryError] = useState("")
+  const [cityError, setCityError] = useState("")
+  const [streetError, setStreetError] = useState("")
+  const [numberError, setNUmberError] = useState("")
 
   const { isLoading, sendRequest: sendRegistrationRequest } = useHttp();
   const navigate = useNavigate();
@@ -38,6 +47,8 @@ const SignupFrom = () => {
       navigate("/");
     } else if (response.message === "The entered email is already in use!") {
       setEmailError("The entered email is already in use!");
+    } else if(response.message === "Location information are not correct!"){
+      setCountryError("Location information are not correct!")
     }
   };
 
@@ -50,6 +61,10 @@ const SignupFrom = () => {
     let genderErrorMessage = gender === "" ? "Choose gender" : "";
     let emailErrorMessage = validateEmail(email);
     let passwordErrorMessage = validatePassword(password);
+    let countryErrorMessage = validateEmptyString(country);
+    let cityErrorMessage = validateEmptyString(city);
+    let streetErrorMessage = validateEmptyString(street);
+    let numberErrorMessage = validateEmptyString(number)
     let repeatedPasswordErrorMessage;
     if (repeatedPassword === "") {
       repeatedPasswordErrorMessage = "Repeated password can not be empty!";
@@ -67,7 +82,11 @@ const SignupFrom = () => {
       genderErrorMessage !== "" ||
       emailErrorMessage !== "" ||
       passwordErrorMessage !== "" ||
-      repeatedPasswordErrorMessage !== ""
+      repeatedPasswordErrorMessage !== "" ||
+      countryErrorMessage !== "" ||
+      cityErrorMessage !== "" ||
+      streetErrorMessage !== "" ||
+      numberErrorMessage
     ) {
       setEmailError(emailErrorMessage);
       setPasswordError(passwordErrorMessage);
@@ -76,6 +95,10 @@ const SignupFrom = () => {
       setFirstNameError(firstNameErrorMessage);
       setLastnameError(lastNameErrorMessage);
       setRepeatedPasswordError(repeatedPasswordErrorMessage);
+      setCountryError(cityErrorMessage)
+      setCityError(cityErrorMessage)
+      setStreetError(streetErrorMessage)
+      setNUmberError(numberErrorMessage)
       return;
     }
 
@@ -85,7 +108,11 @@ const SignupFrom = () => {
       firstname,
       lastname,
       dateOfBirth,
-      gender
+      gender,
+      country,
+      city,
+      street, 
+      number
     );
 
     sendRegistrationRequest(
@@ -107,6 +134,10 @@ const SignupFrom = () => {
     setFirstNameError('');
     setLastnameError('');
     setRepeatedPasswordError('');
+    setCountry('');
+    setCityError('');
+    setCityError('');
+    setNUmberError('');
   };
 
   return (
@@ -116,7 +147,7 @@ const SignupFrom = () => {
           <h2>Sign up</h2>
           <div className={classes.inputContainerWrapper}>
             <div className={classes.inputContainer}>
-              <label htmlFor="firstname">Firstname</label>
+              <label htmlFor="firstname">Firstname*</label>
               <input
                 id="firstname"
                 type="text"
@@ -128,7 +159,7 @@ const SignupFrom = () => {
               <p className={classes.error}>{firstnameError}</p>
             </div>
             <div className={classes.inputContainer}>
-              <label htmlFor="lastname">Lastname</label>
+              <label htmlFor="lastname">Lastname*</label>
               <input
                 id="lastname"
                 type="text"
@@ -142,7 +173,7 @@ const SignupFrom = () => {
           </div>
           <div className={classes.inputContainerWrapper}>
             <div className={classes.inputContainer}>
-              <label htmlFor="dof">Date of birth</label>
+              <label htmlFor="dof">Date of birth*</label>
               <input
                 id="dof"
                 type="date"
@@ -152,7 +183,7 @@ const SignupFrom = () => {
               <p className={classes.error}>{dateOfBirthError}</p>
             </div>
             <div className={classes.inputContainer}>
-              <label htmlFor="gender">Gender</label>
+              <label htmlFor="gender">Gender*</label>
               <select
                 onChange={(event) => setGender(event.target.value)}
                 placeholder="Choose your gender..."
@@ -165,7 +196,7 @@ const SignupFrom = () => {
             </div>
           </div>
           <div className={classes.inputContainerSecond}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email*</label>
             <input
               id="email"
               type="text"
@@ -177,7 +208,7 @@ const SignupFrom = () => {
             <p className={classes.error}>{emailError}</p>
           </div>
           <div className={classes.inputContainerSecond}>
-            <label htmlFor="image">Password</label>
+            <label htmlFor="image">Password*</label>
             <input
               id="password"
               type="password"
@@ -189,7 +220,7 @@ const SignupFrom = () => {
             <p className={classes.error}>{passwordError}</p>
           </div>
           <div className={classes.inputContainerSecond}>
-            <label htmlFor="image">Repeat password</label>
+            <label htmlFor="image">Repeat password*</label>
             <input
               id="repeated-password"
               type="password"
@@ -199,6 +230,50 @@ const SignupFrom = () => {
               }}
             />
             <p className={classes.error}>{repeatedPasswordError}</p>
+          </div>
+          <div className={classes.inputContainerWrapper}>
+            <div className={classes.inputContainer}>
+              <label htmlFor="dof">Country*</label>
+              <input
+                id="country"
+                type="text"
+                name="country"
+                onChange={(event) => setCountry(event.target.value)}
+              />
+              <p className={classes.error}>{countryError}</p>
+            </div>
+            <div className={classes.inputContainer}>
+              <label htmlFor="gender">City*</label>
+              <input
+                id="city"
+                type="text"
+                name="city"
+                onChange={(event) => setCity(event.target.value)}
+              />
+              <p className={classes.error}>{cityError}</p>
+            </div>
+          </div>
+          <div className={classes.inputContainerWrapper}>
+            <div className={classes.inputContainer}>
+              <label htmlFor="dof">Street*</label>
+              <input
+                id="street"
+                type="text"
+                name="street"
+                onChange={(event) => setStreet(event.target.value)}
+              />
+              <p className={classes.error}>{streetError}</p>
+            </div>
+            <div className={classes.inputContainer}>
+              <label htmlFor="gender">Number*</label>
+              <input
+                id="number"
+                type="text"
+                name="number"
+                onChange={(event) => setNumber(event.target.value)}
+              />
+              <p className={classes.error}>{numberError}</p>
+            </div>
           </div>
           <div>
             <button type="submit" disabled={isLoading}>

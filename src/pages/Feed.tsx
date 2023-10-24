@@ -7,6 +7,7 @@ import { useLoggedUserInformation } from "../hooks/useLoggedUserInformation";
 import LoadingPage from "./LoadingPage";
 import Post from "../model/response/Post";
 import classes from "../styles/Pages/Feed.module.css";
+import RecommendedFriendList from "../components/Recommendation/Friend/RecommendedFriendList";
 
 const Feed = () => {
   const [posts, setPosts] = useState<Posts>(new Posts([]));
@@ -46,18 +47,25 @@ const Feed = () => {
     <>
       {isLoading && <LoadingPage />}
       {!isLoading && (
-        <>
-          <div className={classes.createPostContainer}>
-            <CreatePost
-              onCreatePost={addPostToPostsList}
-              onCreatePagePost={() => {}}
-              type="post"
-            />
+        <div className={classes.mainContainer}>
+          <div className={classes.friendRecommendations}>
           </div>
-          <div className={classes.postsContainer}>
-            <PostsComponent posts={posts!} />
+          <div>
+            <div className={classes.createPostContainer}>
+              <CreatePost
+                onCreatePost={addPostToPostsList}
+                onCreatePagePost={() => {}}
+                type="post"
+              />
+            </div>
+            <div className={classes.postsContainer}>
+              <PostsComponent posts={posts!} />
+            </div>
           </div>
-        </>
+          <div className={classes.friendRecommendations}>
+            <RecommendedFriendList />
+          </div>
+        </div>
       )}
     </>
   );

@@ -11,3 +11,15 @@
 .pagePostContainer{
     margin-left: 20px;
 }
+
+.mainContainer{
+    display: flex;
+    justify-content: center;
+    align-items: top;
+}
+
+.friendRecommendations{
+    display: flex;
+    justify-content: center;
+    align-items: top;
+}

@@ -1,0 +1,90 @@
+.container{
+    margin: 0;
+    background-color: rgb(253, 251, 251);
+    border: 1px solid gray;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.topContainer{
+    display: flex;
+    justify-content: left;
+    align-items: top;
+}
+
+.buttomContainer{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 10px;
+}
+
+.img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover; /* Ovo će osigurati da se slika popuni na najbolji način */
+    object-position: center center;
+}
+
+.credentialContainer{
+    padding: 10px;
+    margin-left: 5px;
+}
+
+.fullname{
+    margin: 0;
+    font-size: 19px;
+}
+
+.info{
+    margin: 0;
+    margin-top: 5px;
+}
+
+.addButton{
+    background-color: rgb(0, 174, 233); 
+    border: 0.5px solid rgb(204, 204, 204); 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    transition: background-color 0.3s;
+    border-radius: 10px;
+    width: 180px;
+    height: 35px;
+    text-align: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.addButton:hover {
+    background-color: rgb(0, 159, 212); /* Promenite boju pozadine na sivu pri hoveru */
+  }
+
+.removeButtonContainer{
+    position: absolute;
+    margin-left: 320px;
+    margin-top: 5px;  
+}
+
+.removeButton{
+    background-color: rgb(249, 249, 249); 
+    border: 0.5px solid rgb(204, 204, 204); 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    transition: background-color 0.3s;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    justify-content: center;
+}
+
+.removeButton:hover {
+    background-color: rgb(240, 249, 254); /* Promenite boju pozadine na sivu pri hoveru */
+  }

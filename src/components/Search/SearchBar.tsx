@@ -8,6 +8,12 @@ const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      navigate("/searchedUsersAndPages/" + searchText);
+    }
+  };
+
   return (
     <div>
       <div className={classes.searchContainer}>
@@ -17,6 +23,7 @@ const SearchBar = () => {
           placeholder="Search users or pages..."
           value={searchText}
           onChange={(event) => {setSearchText(event.target.value)}}
+          onKeyPress={handleKeyPress}
         />
         <button className={classes.button} onClick={() => {navigate("/searchedUsersAndPages/" + searchText)}}>
           <FontAwesomeIcon icon={faSearch} />

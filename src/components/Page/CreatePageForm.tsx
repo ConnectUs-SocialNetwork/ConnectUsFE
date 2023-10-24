@@ -20,7 +20,6 @@ const CreatePageForm = () => {
   const navigate = useNavigate();
 
   const applyData = (data: PageResponse) => {
-    console.log(data)
   };
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {

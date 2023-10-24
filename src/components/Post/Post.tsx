@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import AvatarAndFullName from "./AvatarAndFullName";
 import classes from "../../styles/Feed/Post.module.css";
 import PostText from "./PostText";
-import PostImage from "./PostImage";
 import PostActions from "./PostActions";
 import Post from "../../model/response/Post";
 import AddComment from "../Comments/AddComment";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 import CommentResponse from "../../model/response/CommentResponse";
-import PostImages from "./PostImages";
 import ImageSlider from "./ImageSlider";
 
 interface PostProps {

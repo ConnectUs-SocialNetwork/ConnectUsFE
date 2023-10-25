@@ -18,30 +18,35 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    padding: 10px;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px;
 }
 
 .img{
-    width: 120px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     object-fit: cover; /* Ovo će osigurati da se slika popuni na najbolji način */
     object-position: center center;
 }
 
 .credentialContainer{
-    padding: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
     margin-left: 5px;
 }
 
 .fullname{
     margin: 0;
-    font-size: 19px;
+    font-size: 16px;
 }
 
 .info{
     margin: 0;
     margin-top: 5px;
+    font-size: 13px;
 }
 
 .addButton{
@@ -53,11 +58,12 @@
     align-items: center; 
     transition: background-color 0.3s;
     border-radius: 10px;
-    width: 180px;
+    width: 220px;
     height: 35px;
     text-align: center;
     justify-content: center;
     margin-right: 10px;
+    color: white;
 }
 
 .addButton:hover {
@@ -66,8 +72,7 @@
 
 .removeButtonContainer{
     position: absolute;
-    margin-left: 320px;
-    margin-top: 5px;  
+    margin-left: 250px; 
 }
 
 .removeButton{

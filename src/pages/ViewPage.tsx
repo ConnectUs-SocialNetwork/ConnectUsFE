@@ -35,11 +35,7 @@ const ViewPage = () => {
     <div className={classes.viewUserProfileContainer}>
       <PageHeader
         id={pageInformation?.pageId!}
-        imageSrc={
-          pageInformation?.avatar === ""
-            ? BlankProfilePicture
-            : pageInformation?.avatar!
-        }
+        imageSrc={pageInformation?.avatar!}
         name={pageInformation?.name!}
         numberOfLikes={pageInformation?.numberOfLikes!}
         description={pageInformation?.description!}

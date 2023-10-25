@@ -4,6 +4,8 @@ import useHttp from "../../../hooks/useHttp";
 import { useLoggedUserInformation } from "../../../hooks/useLoggedUserInformation";
 import classes from "../../../styles/Recommendation/Friend/RecommendedFriendList.module.css";
 import RecommendedFriend from "./RecommendedFriend";
+import Spinner from "../../UI/Spinner";
+import NoUsers from "./NoUsers";
 
 const RecommendedFriendList = () => {
   const [users, setUsers] = useState<RecommendedUserResponse[]>([]);
@@ -35,15 +37,25 @@ const RecommendedFriendList = () => {
   };
 
   const removeUser = (user: RecommendedUserResponse) => {
-    setUsers(users.filter(currentUser => currentUser.id !== user.id))
-  }
+    setUsers(users.filter((currentUser) => currentUser.id !== user.id));
+  };
 
   return (
     <div className={classes.container}>
       <h2 className={classes.h2}>You may know...</h2>
-      {users.map((user) => (
-        <RecommendedFriend user={user} key={user.id} onRemove={removeUser} />
-      ))}
+      {isLoading && <Spinner />}
+      {!isLoading && (
+        <>
+          {users.map((user) => (
+            <RecommendedFriend
+              user={user}
+              key={user.id}
+              onRemove={removeUser}
+            />
+          ))}
+        </>
+      )}
+      {users && users.length === 0 && <><NoUsers /></>}
     </div>
   );
 };

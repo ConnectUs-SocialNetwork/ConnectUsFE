@@ -6,8 +6,6 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faUserGroup } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import useHttp from "../../../hooks/useHttp";
-import FriendRequestResponse from "../../../model/response/FriendRequestResponse";
 import { useNavigate } from "react-router-dom";
 
 interface RecommendedFriendProps {

@@ -22,4 +22,6 @@
     display: flex;
     justify-content: center;
     align-items: top;
+    width: 420px;
+    height: min-content;
 }

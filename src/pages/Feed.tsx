@@ -8,6 +8,7 @@ import LoadingPage from "./LoadingPage";
 import Post from "../model/response/Post";
 import classes from "../styles/Pages/Feed.module.css";
 import RecommendedFriendList from "../components/Recommendation/Friend/RecommendedFriendList";
+import RecommendedPageList from "../components/Recommendation/Page/RecommendedPageList";
 
 const Feed = () => {
   const [posts, setPosts] = useState<Posts>(new Posts([]));
@@ -49,6 +50,7 @@ const Feed = () => {
       {!isLoading && (
         <div className={classes.mainContainer}>
           <div className={classes.friendRecommendations}>
+            <RecommendedPageList />
           </div>
           <div>
             <div className={classes.createPostContainer}>

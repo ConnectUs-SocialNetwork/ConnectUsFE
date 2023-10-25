@@ -55,7 +55,11 @@ const RecommendedFriendList = () => {
           ))}
         </>
       )}
-      {users && users.length === 0 && <><NoUsers /></>}
+      {!isLoading && users && users.length === 0 && (
+        <>
+          <NoUsers />
+        </>
+      )}
     </div>
   );
 };

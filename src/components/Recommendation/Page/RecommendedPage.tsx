@@ -79,7 +79,7 @@ const RecommendedPage: React.FC<RecommendedPageProps> = ({ page, onRemove }) => 
   return (
     <div className={classes.container}>
       <div className={classes.topContainer}>
-        <img src={imageInBase64} className={classes.img}></img>
+        <img src={imageInBase64} className={classes.img} alt="slika"/>
         <div className={classes.credentialContainer}>
             <p className={classes.fullname}>{page.name}</p>
             <p className={classes.info}><FontAwesomeIcon icon={faUsers} />&nbsp;{numberOfLikes} likes</p>

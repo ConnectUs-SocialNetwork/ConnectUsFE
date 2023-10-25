@@ -51,7 +51,7 @@ const RecommendedPageList = () => {
           ))}
         </>
       )}
-      {pages && pages.length === 0 && (
+      {!isLoading && pages && pages.length === 0 && (
         <>
           <NoPages />
         </>

@@ -119,6 +119,7 @@
 .fileInputLabel {
   margin-right: 10px; /* Dodajte malo razmaka između teksta i dugmeta */
   margin-bottom: 10px;
+  font-size: 12px;
 }
 
 .button {
@@ -141,4 +142,24 @@
 .button:disabled {
   cursor: auto;
   background-color: rgb(184, 183, 183);
+}
+
+.tag{
+  position: absolute;
+  margin-left: 570px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: rgb(225, 224, 224);
+  border: none;
+}
+
+.tag:hover{
+  background-color: rgb(205, 205, 205);
+  cursor: pointer;
+}
+
+.tagIcon{
+  width: 20px;
+  height: 20px;
 }

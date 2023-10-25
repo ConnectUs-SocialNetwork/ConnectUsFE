@@ -6,7 +6,7 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { faShare } from "@fortawesome/free-solid-svg-icons";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 import useHttp from "../../hooks/useHttp";
-import LikesModal from "../Post/LikesModal";
+import LikesModal from "../Post/UsersModal";
 import SearchUserResponse from "../../model/response/SearchFriendsResponse";
 import CommentResponse from "../../model/response/CommentResponse";
 import CommentsModal from "../Comments/CommentsModal";

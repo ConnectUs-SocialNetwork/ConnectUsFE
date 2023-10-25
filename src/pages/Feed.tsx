@@ -44,6 +44,8 @@ const Feed = () => {
     setPosts((prevPosts) => new Posts([post, ...prevPosts.posts]));
   };
 
+  console.log(posts)
+
   return (
     <>
       {isLoading && <LoadingPage />}

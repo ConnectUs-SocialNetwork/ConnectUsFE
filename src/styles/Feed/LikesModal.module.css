@@ -11,7 +11,7 @@
   .modal {
     position: fixed;
     top: 50px;
-    left: 32%;
+    left: 31.5%;
     width: 37%;
     z-index: 100;
     overflow: hidden;
@@ -23,12 +23,13 @@
     height: max-content;
     font-family: sans-serif;
     padding-left: 15px;
-    border-bottom: 1px solid gray;
-    margin-bottom: 5px;
+    border-bottom: 1px solid rgb(211, 211, 211);
+    margin-bottom: 15px;
   }
 
   .content{
     margin-left: 25px;
     max-height: 500px;
     overflow-y: auto;
+    padding-bottom: 10px;
   }

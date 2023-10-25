@@ -29,3 +29,17 @@
     font-family: sans-serif;
     color: gray;
   }
+  .tag{
+  position: absolute;
+  margin-left: 525px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: rgb(225, 224, 224);
+  border: none;
+}
+
+.tag:hover{
+  background-color: rgb(205, 205, 205);
+  cursor: pointer;
+}

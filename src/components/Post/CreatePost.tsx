@@ -9,97 +9,108 @@ import useHttp from "../../hooks/useHttp";
 import Post from "../../model/response/Post";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 import PagePost from "../../model/response/PagePostResponse";
-import BlankProfilePicture from '../../assets/BlankProfilePicture.png'
+import BlankProfilePicture from "../../assets/BlankProfilePicture.png";
+import TagUserModal from "./TagUserModal";
 
 interface OpenDialogData {
   isOpen: boolean;
   type: string;
 }
 
-interface CreatePostProps{
+interface CreatePostProps {
   onCreatePost: (post: Post) => void;
   onCreatePagePost: (pagePost: PagePost) => void;
   type: string;
 }
 
-const CreatePost: React.FC<CreatePostProps> = ({onCreatePost, onCreatePagePost, type}) => {
-  const userInformation = useLoggedUserInformation()
+const CreatePost: React.FC<CreatePostProps> = ({
+  onCreatePost,
+  onCreatePagePost,
+  type,
+}) => {
+  const userInformation = useLoggedUserInformation();
   const [dialogData, setDialogData] = useState<OpenDialogData>({
     isOpen: false,
-    type: '',
+    type: "",
   });
 
-  const { sendRequest: savePostRequest } = useHttp(); 
+  const { sendRequest: savePostRequest } = useHttp();
 
   const handleSavePost = (postData: any) => {
-    if(type === "post"){
-      savePostRequest({
-        url: "http://localhost:8081/api/v1/post/save",
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': "Bearer " + userInformation?.tokens.accessToken
+    if (type === "post") {
+      savePostRequest(
+        {
+          url: "http://localhost:8081/api/v1/post/save",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + userInformation?.tokens.accessToken,
+          },
+          body: postData,
         },
-        body: postData
-      },
-      applyData)
-  
-      setDialogData({isOpen: false, type: ''})
-    }else{
-      savePostRequest({
-        url: "http://localhost:8081/api/v1/page-post",
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': "Bearer " + userInformation?.tokens.accessToken
+        applyData
+      );
+
+      setDialogData({ isOpen: false, type: "" });
+    } else {
+      savePostRequest(
+        {
+          url: "http://localhost:8081/api/v1/page-post",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + userInformation?.tokens.accessToken,
+          },
+          body: postData,
         },
-        body: postData
-      },
-      applyData)
-  
-      setDialogData({isOpen: false, type: ''})
+        applyData
+      );
+
+      setDialogData({ isOpen: false, type: "" });
     }
-  }
+  };
 
   const applyData = (postResponse: any) => {
-    if(type === "post"){
+    if (type === "post") {
       onCreatePost(postResponse);
-    }else{
-      onCreatePagePost(postResponse)
+    } else {
+      onCreatePagePost(postResponse);
     }
-    
-  }
+  };
 
   const handleOnClose = () => {
-    setDialogData({isOpen: false, type: 'Post'});
-  }
+    setDialogData({ isOpen: false, type: "Post" });
+  };
 
   var imageInBase64;
 
-  if(userInformation?.user.profileImage){
-    imageInBase64 = 'data:image/jpeg;base64,' + userInformation?.user.profileImage;
-  }else{
+  if (userInformation?.user.profileImage) {
+    imageInBase64 =
+      "data:image/jpeg;base64," + userInformation?.user.profileImage;
+  } else {
     imageInBase64 = BlankProfilePicture;
   }
-
+  /* */
   return (
     <div className={classes.createPostContainer}>
       {dialogData.isOpen && (
         <PostModal
           onConfirm={handleSavePost}
-          title="Title"
-          message="Message"
           type={dialogData.type}
           onClose={handleOnClose}
         />
       )}
       <div className={classes["post-form-container"]}>
         <div className={classes["avatar-container"]}>
-          <img src={imageInBase64} alt="User Avatar" className={classes["avatar"]} />
+          <img
+            src={imageInBase64}
+            alt="User Avatar"
+            className={classes["avatar"]}
+          />
         </div>
         <button
           className={classes["open-modal-button"]}
-          onClick={() => setDialogData({isOpen: true, type: 'Post'})}
+          onClick={() => setDialogData({ isOpen: true, type: "Post" })}
         >
           Create Post
         </button>
@@ -108,7 +119,7 @@ const CreatePost: React.FC<CreatePostProps> = ({onCreatePost, onCreatePagePost, 
         <StyledButton
           text="Media"
           iconType={faImage}
-          onClick={() => setDialogData({isOpen: true, type: 'Media'})}
+          onClick={() => setDialogData({ isOpen: true, type: "Media" })}
           color="blue"
           textColor="gray"
         />

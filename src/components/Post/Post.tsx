@@ -32,6 +32,7 @@ const PostComponent: React.FC<PostProps> = ({ post }) => {
           lastname={post.lastname}
           userId={post.userId}
           profilePicture={post.profileImage}
+          taggedUsers={post.taggedUsers}
         />
         <PostText text={post.text} />
         {post.images.length !== 0 && <ImageSlider images={post.images} />}

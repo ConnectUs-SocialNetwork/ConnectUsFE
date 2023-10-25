@@ -28,6 +28,9 @@ import EditProfilePage from "./pages/EditProfilePage.js";
 import PhotosNavPage from "./components/MyProfile/NavPages/Photos/PhotosNavPage.js";
 import Photos from "./components/MyProfile/NavPages/Photos/Photos.js";
 import PagePhotos from "./components/Page/ViewPage/NavPages/PagePhotos.js";
+import TaggedPhotosNavPage from "./components/MyProfile/NavPages/Photos/TaggedPhotosNavPage.js";
+import UserPhotosNavPage from "./components/Profile/NavPages/Photos/UserPhotosNavPage.js";
+import UserTaggedPhotosNavPage from "./components/Profile/NavPages/Photos/UserTaggedPhotosNavPage.js";
 
 const router = createBrowserRouter([
   {
@@ -40,11 +43,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Feed />
+        element: <Feed />,
       },
       {
         path: "/my-network",
-        element: <p>My network</p>
+        element: <p>My network</p>,
       },
       {
         path: "/notifications",
@@ -52,17 +55,17 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <AllNotificationNavPage />
+            element: <AllNotificationNavPage />,
           },
           {
             path: "unread",
-            element: <UnreadNotificationNavPage />
-          }
-        ]
-      }, 
+            element: <UnreadNotificationNavPage />,
+          },
+        ],
+      },
       {
         path: "/pages",
-        element: <PageFeed />
+        element: <PageFeed />,
       },
       {
         path: "/searchedUsersAndPages/:searchText",
@@ -70,33 +73,33 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <AllSearchedUsersNavPage />
+            element: <AllSearchedUsersNavPage />,
           },
           {
             path: "pages",
-            element: <SearchPagesNavPage />
-          }
-        ]
+            element: <SearchPagesNavPage />,
+          },
+        ],
       },
       {
         path: "editProfile/:userId",
-        element: <EditProfilePage />
+        element: <EditProfilePage />,
       },
       {
         path: "createPage",
-        element: <CreatePageForm />
+        element: <CreatePageForm />,
       },
       {
         path: "editPage/:pageId",
-        element: <EditPage />
+        element: <EditPage />,
       },
       {
         path: "viewPost/:postId",
-        element: <ViewPostPage />
+        element: <ViewPostPage />,
       },
       {
         path: "viewPagePost/:postId",
-        element: <ViewPagePostPage />
+        element: <ViewPagePostPage />,
       },
       {
         path: "viewPage/:pageId/:administratorId",
@@ -104,17 +107,17 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <PagePostsList />
+            element: <PagePostsList />,
           },
           {
             path: "likes",
-            element: <Likers />
+            element: <Likers />,
           },
           {
             path: "photos",
-            element: <PagePhotos/>
-          }
-        ]
+            element: <PagePhotos />,
+          },
+        ],
       },
       {
         path: "/viewUserProfile/:userId",
@@ -122,7 +125,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <PostsList />
+            element: <PostsList />,
           },
           {
             path: "friends",
@@ -130,15 +133,29 @@ const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: <Friends />
+                element: <Friends />,
               },
               {
                 path: "mutual",
-                element: <MutualFriends />
-              }
-            ]
-          }
-        ]
+                element: <MutualFriends />,
+              },
+            ],
+          },
+          {
+            path: "photos",
+            element: <Photos />,
+            children: [
+              {
+                index: true,
+                element: <UserPhotosNavPage />,
+              },
+              {
+                path: "tagged",
+                element: <UserTaggedPhotosNavPage />,
+              },
+            ],
+          },
+        ],
       },
       {
         path: "/viewMyProfile",
@@ -146,7 +163,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <MyPostsList />
+            element: <MyPostsList />,
           },
           {
             path: "friends",
@@ -158,21 +175,22 @@ const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: <PhotosNavPage />
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+                element: <PhotosNavPage />,
+              },
+              {
+                path: "tagged",
+                element: <TaggedPhotosNavPage />,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ]);
 
 function App() {
-
-  return (
-      <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

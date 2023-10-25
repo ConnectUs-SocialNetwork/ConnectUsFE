@@ -16,18 +16,19 @@ const Backdrop: React.FC<BackdropProps> = (props) => {
 
 interface ModalOverlayProps {
   onClose: () => void;
-  likes: SearchUserResponse[];
+  users: SearchUserResponse[];
+  title: string;
 }
 
 const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
   return (
     <Card className={classes.modal}>
       <header className={classes.likesHeader}>
-        <h2>Likes</h2>
+        <h2>{props.title}</h2>
       </header>
-      {props.likes.length !== 0 && (
+      {props.users.length !== 0 && (
         <div className={classes.content}>
-          {props.likes.map((user) => (
+          {props.users.map((user) => (
             <OneSearchedUser user={user} key={user.id}/>
           ))}
         </div>
@@ -37,11 +38,12 @@ const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
 };
 
 interface LikesModalProps {
-  likes: SearchUserResponse[];
+  users: SearchUserResponse[];
+  title: string;
   onClose: () => void;
 }
 
-const LikesModal: React.FC<LikesModalProps> = (props) => {
+const UsersModal: React.FC<LikesModalProps> = (props) => {
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
@@ -49,11 +51,11 @@ const LikesModal: React.FC<LikesModalProps> = (props) => {
         document.getElementById("backdrop-root")!
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay onClose={props.onClose} likes={props.likes} />,
+        <ModalOverlay onClose={props.onClose} users={props.users} title={props.title}/>,
         document.getElementById("overlay-root")!
       )}
     </React.Fragment>
   );
 };
 
-export default LikesModal;
+export default UsersModal;

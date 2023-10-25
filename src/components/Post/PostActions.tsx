@@ -6,10 +6,11 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { faShare } from "@fortawesome/free-solid-svg-icons";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 import useHttp from "../../hooks/useHttp";
-import LikesModal from "./LikesModal";
+import LikesModal from "./UsersModal";
 import SearchUserResponse from "../../model/response/SearchFriendsResponse";
 import CommentResponse from "../../model/response/CommentResponse";
 import CommentsModal from "../Comments/CommentsModal";
+import UsersModal from "./UsersModal";
 
 interface PostActionsProps {
   postId: number;
@@ -161,12 +162,13 @@ const PostActions: React.FC<PostActionsProps> = ({
   return (
     <>
       {likesModalOpen && (
-        <LikesModal
-          likes={usersWhoLikedPost}
+        <UsersModal
+          users={usersWhoLikedPost}
           onClose={() => {
             setLikesModalOpen(false);
             getUserWhoLikedPost();
           }}
+          title="Likes"
         />
       )}
       {commentsModalOpen && (

@@ -28,6 +28,7 @@
     width: 90px;
     height: 90px;
     border-radius: 50%;
+    image-rendering: crisp-edges;
     object-fit: cover; /* Ovo će osigurati da se slika popuni na najbolji način */
     object-position: center center;
 }
@@ -50,7 +51,7 @@
 }
 
 .addButton{
-    background-color: rgb(0, 174, 233); 
+    background-color: #026dd8;
     border: 0.5px solid rgb(204, 204, 204); 
     padding: 10px 20px; 
     cursor: pointer; 
@@ -67,7 +68,7 @@
 }
 
 .addButton:hover {
-    background-color: rgb(0, 159, 212); /* Promenite boju pozadine na sivu pri hoveru */
+    background-color: #005cbf;
   }
 
 .removeButtonContainer{

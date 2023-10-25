@@ -1,3 +1,5 @@
+import SearchUserResponse from "./SearchFriendsResponse";
+
 export default class Post {
     id: number;
     userId: number;
@@ -10,8 +12,9 @@ export default class Post {
     liked: boolean;
     numberOfLikes: number;
     numberOfComments: number;
+    taggedUsers: SearchUserResponse[];
 
-    constructor(id: number, profileImage: string, userId: number, firstname: string, lastname: string, images: string[], text: string, dateAndTime: string, isLiked: boolean, likes: number, noc: number) {
+    constructor(id: number, profileImage: string, taggedUsers: SearchUserResponse[], userId: number, firstname: string, lastname: string, images: string[], text: string, dateAndTime: string, isLiked: boolean, likes: number, noc: number) {
         this.id = id;
         this.images = images;
         this.text = text;
@@ -23,6 +26,7 @@ export default class Post {
         this.userId = userId;
         this.profileImage = profileImage;
         this.numberOfComments = noc;
+        this.taggedUsers = taggedUsers;
     }
 
 }

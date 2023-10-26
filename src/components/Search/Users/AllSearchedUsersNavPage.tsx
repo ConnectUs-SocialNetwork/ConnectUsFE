@@ -4,12 +4,14 @@ import SearchUserResponse from "../../../model/response/SearchFriendsResponse";
 import { useParams } from "react-router-dom";
 import { useLoggedUserInformation } from "../../../hooks/useLoggedUserInformation";
 import AllSearchedUsers from "./AllSearchedUsers";
+import Spinner from "../../UI/Spinner";
+import NoUsers from "./NoUsers";
 
 const AllSearchedUsersNavPage = () => {
   const [filteredFriends, setFilteredFriends] = useState<SearchUserResponse[]>(
     []
   );
-  const { sendRequest: sendSearchRequest } = useHttp();
+  const { isLoading, sendRequest: sendSearchRequest } = useHttp();
   const params = useParams();
   const userInformation = useLoggedUserInformation();
 
@@ -37,7 +39,9 @@ const AllSearchedUsersNavPage = () => {
 
   return (
     <>
-      <AllSearchedUsers users={filteredFriends} />
+      {!isLoading && filteredFriends.length !== 0 && <AllSearchedUsers users={filteredFriends} />}
+      {isLoading && <Spinner />}
+      {!isLoading && filteredFriends.length === 0 && <NoUsers />}
     </>
   );
 };

@@ -29,7 +29,6 @@ const Actions: React.FC<ActionsProps> = (props) => {
   );
   const userInformation = useLoggedUserInformation();
   const { isLoading, sendRequest } = useHttp();
-  useHttp();
 
   useEffect(() => {
     setFriends(props.friends);

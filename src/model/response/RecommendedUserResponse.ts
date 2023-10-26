@@ -10,6 +10,8 @@ export default class RecommendedUserResponse {
     city: string;
     street: string;
     number: string;
+    requestSentByMe: boolean;
+    heSentFriendRequest: boolean;
 
     constructor(
         id: number,
@@ -22,7 +24,9 @@ export default class RecommendedUserResponse {
         country: string,
         city: string,
         street: string,
-        number: string
+        number: string,
+        requestSentByMe: boolean,
+        heSentFriendRequest: boolean
     ) {
         this.id = id;
         this.firstname = firstname;
@@ -35,5 +39,7 @@ export default class RecommendedUserResponse {
         this.city = city;
         this.street = street;
         this.number = number;
+        this.requestSentByMe = requestSentByMe;
+        this.heSentFriendRequest = heSentFriendRequest;
     }
 }

@@ -44,7 +44,25 @@ const Feed = () => {
     setPosts((prevPosts) => new Posts([post, ...prevPosts.posts]));
   };
 
-  console.log(posts)
+  const applyDeleteData = (post: Post) => {
+    setPosts((prevState) => new Posts(prevState.posts.filter((currentPost) => currentPost.id != post.id)))
+  }
+
+  const sendDeletePostRequest = (postId: number) => {
+    sendGetPostsRequest(
+      {
+        url:
+          "http://localhost:8081/api/v1/post/delete" +
+          "?postId=" + postId,
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + userInformation?.tokens.accessToken,
+        },
+      },
+      applyDeleteData
+    );
+  }
 
   return (
     <>
@@ -63,7 +81,7 @@ const Feed = () => {
               />
             </div>
             <div className={classes.postsContainer}>
-              <PostsComponent posts={posts!} />
+              <PostsComponent posts={posts!} onDeletePost={sendDeletePostRequest}/>
             </div>
           </div>
           <div className={classes.friendRecommendations}>

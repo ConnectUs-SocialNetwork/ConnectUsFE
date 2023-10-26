@@ -11,9 +11,10 @@ import ImageSlider from "./ImageSlider";
 
 interface PostProps {
   post: Post;
+  onDeletePost: (postId: number) => void;
 }
 
-const PostComponent: React.FC<PostProps> = ({ post }) => {
+const PostComponent: React.FC<PostProps> = ({ post, onDeletePost }) => {
   const userInformation = useLoggedUserInformation();
   const [numberOfComments, setNumberOfComments] = useState(
     post.numberOfComments
@@ -33,6 +34,8 @@ const PostComponent: React.FC<PostProps> = ({ post }) => {
           userId={post.userId}
           profilePicture={post.profileImage}
           taggedUsers={post.taggedUsers}
+          postId={post.id}
+          onDeletePost={onDeletePost}
         />
         <PostText text={post.text} />
         {post.images.length !== 0 && <ImageSlider images={post.images} />}

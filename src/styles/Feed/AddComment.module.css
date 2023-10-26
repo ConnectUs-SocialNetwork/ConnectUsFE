@@ -28,6 +28,7 @@
     border-top-left-radius: 15px;
     padding-left: 10px;
     padding-right: 10px;
+    border-right: none;
 }
 
 .input:focus{
@@ -44,7 +45,11 @@
     height: 34px;
     border-bottom-right-radius: 15px;
     border-top-right-radius: 15px;
-    background-color: rgb(237, 237, 237);
+    background-color: rgb(241, 241, 241);
     border: 1px solid rgb(198, 198, 198);
     cursor: pointer;
+}
+
+.button:hover{
+    background-color: rgb(221, 221, 221);
 }

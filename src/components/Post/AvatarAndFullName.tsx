@@ -5,10 +5,11 @@ import { calculateTimeAgo1, formatDate } from "../../util/helperFuntions";
 import { useState } from "react";
 import TimePopup from "../UI/TimePopup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTag } from "@fortawesome/free-solid-svg-icons";
+import { faTag, faTrash } from "@fortawesome/free-solid-svg-icons";
 import SearchUserResponse from "../../model/response/SearchFriendsResponse";
-import LikesModal from "./UsersModal";
 import UsersModal from "./UsersModal";
+import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
+import ConfirmModal from "../UI/ConfirmModal";
 
 interface PropsData {
   userId: number;
@@ -17,14 +18,18 @@ interface PropsData {
   profilePicture: string;
   time: string;
   taggedUsers: SearchUserResponse[];
+  postId: number;
+  onDeletePost: (postId: number) => void;
 }
 
 const AvatarAndFullName: React.FC<PropsData> = (props) => {
   const [showExactTime, setShowExactTime] = useState(false);
   const [usersModalOpen, setUsersModalOpen] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   const formattedDateTimeFromServer = props.time;
   const parsedDateTime = new Date(formattedDateTimeFromServer);
+  const userInformation = useLoggedUserInformation();
 
   let timeAgo = calculateTimeAgo1(parsedDateTime);
   const formattedDate = formatDate(props.time);
@@ -36,7 +41,7 @@ const AvatarAndFullName: React.FC<PropsData> = (props) => {
   } else {
     imageInBase64 = BlankProfilePicture;
   }
-
+  
   return (
     <div className={classes["avatar-container"]}>
       {usersModalOpen && (
@@ -46,6 +51,14 @@ const AvatarAndFullName: React.FC<PropsData> = (props) => {
             setUsersModalOpen(false);
           }}
           title="Tagged users"
+        />
+      )}
+      {showConfirmModal && (
+        <ConfirmModal
+          entityId={props.postId}
+          message="Are you sure you want to delete the post?"
+          onClose={() => setShowConfirmModal(false)}
+          onConfirm={props.onDeletePost}
         />
       )}
       <div>
@@ -68,11 +81,24 @@ const AvatarAndFullName: React.FC<PropsData> = (props) => {
         </p>
         {showExactTime && <TimePopup exactTime={formattedDate} />}
       </div>
-      {props.taggedUsers.length !== 0 && (
-        <button className={classes.tag} onClick={() => setUsersModalOpen(true)}>
-          <FontAwesomeIcon icon={faTag} />
-        </button>
-      )}
+      <div className={classes.buttonContainer}>
+        {props.taggedUsers.length !== 0 && (
+          <button
+            className={classes.tag}
+            onClick={() => setUsersModalOpen(true)}
+          >
+            <FontAwesomeIcon icon={faTag} />
+          </button>
+        )}
+        {props.userId === userInformation?.user.id && (
+          <button
+            className={classes.trash}
+            onClick={() => setShowConfirmModal(true)}
+          >
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
+        )}
+      </div>
     </div>
   );
 };

@@ -41,10 +41,12 @@ const PostActions: React.FC<PostActionsProps> = ({
   const { sendRequest: sendUnlikeRequest } = useHttp();
   const { sendRequest: sendGetUsersWhoLikedPost } = useHttp();
   const { sendRequest: sendGetComments } = useHttp();
+  const { sendRequest } = useHttp();
 
   useEffect(() => {
+    setLikesCounter(numberOfLikes)
     setCommentsCounter(numberOfComments);
-  }, [numberOfComments]);
+  }, [numberOfComments, numberOfLikes]);
 
   var likesString = "";
   var commentsString = "";
@@ -158,6 +160,29 @@ const PostActions: React.FC<PostActionsProps> = ({
     );
   };
 
+  const applyDeleteData = (comment: CommentResponse) => {
+    setCommentsCounter((prevState) => prevState - 1)
+    setComments((prevState) =>
+      prevState.filter((currentComment) => currentComment.id != comment.id)
+    );
+  };
+
+  const sendDeleteCommentRequest = (commentId: number) => {
+    sendRequest(
+      {
+        url:
+          "http://localhost:8081/api/v1/comment/delete" +
+          "?commentId=" +
+          commentId,
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + userInformation?.tokens.accessToken,
+        },
+      },
+      applyDeleteData
+    );
+  };
   //
   return (
     <>
@@ -181,33 +206,36 @@ const PostActions: React.FC<PostActionsProps> = ({
           path="comment"
           postId={postId}
           onAddComment={addCommentToList}
+          onDelete={sendDeleteCommentRequest}
         />
       )}
       <div>
-        <div className={classes.likesAndCommentsContainer}>
-          <div className={classes.likes}>
-            <p
-              className={classes.likesText}
-              onClick={() => {
-                setLikesModalOpen(true);
-                getUserWhoLikedPost();
-              }}
-            >
-              {likesCounter === 0 ? "" : likesCounter} {likesString}
-            </p>
+        {(likesCounter !== 0 || commentCounter !== 0) && (
+          <div className={classes.likesAndCommentsContainer}>
+            <div className={classes.likes}>
+              <p
+                className={classes.likesText}
+                onClick={() => {
+                  setLikesModalOpen(true);
+                  getUserWhoLikedPost();
+                }}
+              >
+                {likesCounter === 0 ? "" : likesCounter} {likesString}
+              </p>
+            </div>
+            <div className={classes.comments}>
+              <p
+                className={classes.commentText}
+                onClick={() => {
+                  setCommentsModalOpen(true);
+                  getComments();
+                }}
+              >
+                {commentCounter === 0 ? "" : commentCounter} {commentsString}
+              </p>
+            </div>
           </div>
-          <div className={classes.comments}>
-            <p
-              className={classes.commentText}
-              onClick={() => {
-                setCommentsModalOpen(true);
-                getComments();
-              }}
-            >
-              {commentCounter === 0 ? "" : commentCounter} {commentsString}
-            </p>
-          </div>
-        </div>
+        )}
         <div className={classes.actionsContainer}>
           <StyledButton
             iconType={faThumbsUp}
@@ -220,7 +248,10 @@ const PostActions: React.FC<PostActionsProps> = ({
             iconType={faComment}
             text="Comment"
             color="grey"
-            onClick={() => {setCommentsModalOpen(true)}}
+            onClick={() => {
+              setCommentsModalOpen(true);
+              getComments();
+            }}
             textColor="gray"
           />
           <StyledButton

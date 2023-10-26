@@ -1,38 +1,61 @@
-.commentContainer{
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    margin-left: 0;
-    margin-bottom: 10px;
+.commentContainer {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  margin-left: 0;
+  margin-bottom: 10px;
 }
 
-.profileImageContainer{
-    width: 45px;
+.profileImageContainer {
+  width: 45px;
 }
 
-.profileImage{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover; /* Ovo će osigurati da se slika popuni na najbolji način */
-    object-position: center center; /* Ovo će postaviti centar slike na centar kontejnera */
-    margin-right: 15px;
-  }
-
-.commentContentContainer{
-    border-radius: 10px;
-    background-color: rgb(223, 223, 223);
-    width: 500px;
-    padding-left: 10px;
-    padding-top: 5px;
+.profileImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover; /* Ovo će osigurati da se slika popuni na najbolji način */
+  object-position: center center; /* Ovo će postaviti centar slike na centar kontejnera */
+  margin-right: 15px;
 }
 
-.credentials{
-    font-weight: bold;
-    margin-top: 0;
-    margin-bottom: 0;
+.commentContentContainer {
+  border-radius: 10px;
+  background-color: rgb(243, 243, 243);
+  width: 500px;
+  padding-left: 10px;
+  padding-top: 5px;
 }
 
-.commentText{
-    margin-top: 0;
+.commentContentContainer div {
+  display: flex;
+  justify-content: left;
+}
+
+.trash {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(225, 224, 224);
+  border: none;
+  left:370px
+}
+
+.trash:hover {
+  background-color: rgb(205, 205, 205);
+  cursor: pointer;
+}
+
+.credentials {
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.commentText {
+  margin-top: 0;
 }

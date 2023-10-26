@@ -105,6 +105,9 @@ const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
       taggedFriendIds.map((user) => user.id)
     );
 
+    console.log(postRequest)
+    console.log("User infomations: " + userInformation.user.id)
+
     props.onConfirm(postRequest);
   };
 

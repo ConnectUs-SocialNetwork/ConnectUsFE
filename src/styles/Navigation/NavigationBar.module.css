@@ -1,8 +1,12 @@
 
-.navContainer{
+.navContainer {
+  position: fixed;
+  top: 0;
   display: flex;
   width: 100%;
   height: 60px;
+  background-color: #fff;
+  z-index: 0.5;
 }
 
 .searchContainer{

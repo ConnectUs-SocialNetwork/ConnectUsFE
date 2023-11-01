@@ -88,11 +88,17 @@ const CreatePageForm = () => {
                 onChange={(event) => setCategory(event.target.value)}
                 placeholder="Choose your gender..."
               >
+                <option>Music</option>
+                <option>Sport</option>
+                <option>Technology</option>
+                <option>Business</option>
+                <option>Books and reading</option>
                 <option>Travel</option>
                 <option>Food</option>
                 <option>Fashion</option>
                 <option>Fitness and Wellness</option>
                 <option>Entertainment</option>
+                
               </select>
               <p className={classes.error}>{categoryError}</p>
             </div>

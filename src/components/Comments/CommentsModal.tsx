@@ -6,7 +6,6 @@ import CommentResponse from "../../model/response/CommentResponse";
 import Comment from "./Comment";
 import AddComment from "./AddComment";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
-import useHttp from "../../hooks/useHttp";
 import NoComment from "./NoComments";
 
 interface BackdropProps {

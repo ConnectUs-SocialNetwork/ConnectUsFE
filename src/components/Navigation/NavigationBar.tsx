@@ -1,5 +1,4 @@
 import { faHome } from "@fortawesome/free-solid-svg-icons";
-import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { faFileCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";

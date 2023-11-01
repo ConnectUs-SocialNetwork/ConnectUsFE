@@ -4,9 +4,9 @@ import useHttp from "../../../../hooks/useHttp";
 import SearchUserResponse from "../../../../model/response/SearchFriendsResponse";
 import { useLoggedUserInformation } from "../../../../hooks/useLoggedUserInformation";
 import classes from "../../../../styles/Profile/NavPages/Friends/AllUserFriends.module.css";
-import OneSearchedUser from "../../../Search/Users/SearchedUser";
 import NoLikers from "../../NoUsers";
 import LoadingPage from "../../../../pages/LoadingPage";
+import UserCart from "../../../Search/Users/UserCart";
 
 const Likers = () => {
   const [likers, setLikers] = useState<SearchUserResponse[]>([]);
@@ -42,13 +42,11 @@ const Likers = () => {
       {!isLoading && (
         <div className={classes.allSearchedUsersContainier}>
           {likers.length !== 0 && (
-            <ul className={classes.ul}>
+            <>
               {likers.map((user) => (
-                <li key={user.id} className={classes.li}>
-                  <OneSearchedUser user={user} />
-                </li>
+                <UserCart user={user} key={user.id} />
               ))}
-            </ul>
+            </>
           )}
           {likers.length === 0 && <NoLikers />}
         </div>

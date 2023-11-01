@@ -1,15 +1,9 @@
 .allSearchedUsersContainier{
-    width: 700px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    flex-wrap: wrap;
     border-radius: 10px;
-    margin-top: 15px;
     padding-top: 10px;
-    padding-bottom: 10px;
-    justify-content: center;
-    align-items: center;
-}
-
-.oneSearchedFriendContainer{
-    justify-content: center;
-    align-items: center;
+    padding-left: 35px;
 }

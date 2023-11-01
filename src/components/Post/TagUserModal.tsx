@@ -113,7 +113,7 @@ const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
           <div>
             {taggedFriends.map((taggedFriend) => (
               <>
-                <div>
+                <div key={taggedFriend.id}>
                   <p>
                     {taggedFriend.firstname} {taggedFriend.lastname}{" "}
                     <FontAwesomeIcon

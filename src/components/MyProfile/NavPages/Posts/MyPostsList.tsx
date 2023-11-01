@@ -5,6 +5,7 @@ import useHttp from "../../../../hooks/useHttp";
 import { useLoggedUserInformation } from "../../../../hooks/useLoggedUserInformation";
 import LoadingPage from "../../../../pages/LoadingPage";
 import { useParams } from "react-router-dom";
+import Post from "../../../../model/response/Post";
 
 
 const MyPostsList = () => {
@@ -41,12 +42,32 @@ const MyPostsList = () => {
 
   console.log("Render iz Feed komponente");
 
+  const applyDeleteData = (post: Post) => {
+    setPosts((prevState) => new Posts(prevState.posts.filter((currentPost) => currentPost.id != post.id)))
+  }
+
+  const sendDeletePostRequest = (postId: number) => {
+    sendGetPostsRequest(
+      {
+        url:
+          "http://localhost:8081/api/v1/post/delete" +
+          "?postId=" + postId,
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + userInformation?.tokens.accessToken,
+        },
+      },
+      applyDeleteData
+    );
+  }
+
   return (
     <>
       {isLoading && <LoadingPage />}
       {!isLoading && (
         <div>
-          <PostsComponent posts={posts!} />
+          <PostsComponent posts={posts!} onDeletePost={sendDeletePostRequest}/>
         </div>
       )}
     </>

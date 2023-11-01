@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 
 import Card from "../UI/Card";
 import classes from "../../styles/Feed/LikesModal.module.css";
-import OneSearchedUser from "../Search/Users/SearchedUser";
 import SearchUserResponse from "../../model/response/SearchFriendsResponse";
+import UserCart from "../Search/Users/UserCart";
 
 interface BackdropProps {
   onClose: () => void;
@@ -29,7 +29,7 @@ const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
       {props.users.length !== 0 && (
         <div className={classes.content}>
           {props.users.map((user) => (
-            <OneSearchedUser user={user} key={user.id}/>
+            <UserCart user={user} key={user.id}/>
           ))}
         </div>
       )}

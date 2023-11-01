@@ -1,4 +1,4 @@
-import classes from "../../styles/Recommendation/Friend/NoUsers.module.css"
+import classes from "../../styles/Comments/NoComments.module.css"
 
 const NoComment = () => {
   return (

@@ -1,6 +1,6 @@
 import SearchUserResponse from "../../../../model/response/SearchFriendsResponse";
-import OneSearchedUser from "../../../Search/Users/SearchedUser";
 import classes from "../../../../styles/Profile/NavPages/Friends/AllUserFriends.module.css";
+import UserCart from "../../../Search/Users/UserCart";
 
 interface AllSearchedUsersProps {
   users: SearchUserResponse[];
@@ -9,13 +9,7 @@ interface AllSearchedUsersProps {
 const AllUserFriends: React.FC<AllSearchedUsersProps> = ({ users }) => {
   return (
     <div className={classes.allSearchedUsersContainier}>
-      <ul className={classes.ul}>
-        {users.map((user) => (
-          <li key={user.id} className={classes.li}>
-            <OneSearchedUser user={user} />
-          </li>
-        ))}
-      </ul>
+        {users.map((user) => <UserCart user={user} key={user.id}/>)}
     </div>
   );
 };

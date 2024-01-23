@@ -23,6 +23,14 @@ const Comment: React.FC<CommentProp> = ({ comment, onDelete }) => {
   } else {
     imageInBase64 = BlankProfilePicture;
   }
+  /*{comment.userId === userInformation?.user.id && (
+            <button
+              className={classes.trash}
+              onClick={() => setShowConfirmModal(true)}
+            >
+              <FontAwesomeIcon icon={faTrash} />
+            </button>
+          )} */
   return (
     <div className={classes.commentContainer}>
       {showConfirmModal && (
@@ -48,14 +56,7 @@ const Comment: React.FC<CommentProp> = ({ comment, onDelete }) => {
           <p className={classes.credentials}>
             {comment.firstname} {comment.lastname}
           </p>
-          {comment.userId === userInformation?.user.id && (
-            <button
-              className={classes.trash}
-              onClick={() => setShowConfirmModal(true)}
-            >
-              <FontAwesomeIcon icon={faTrash} />
-            </button>
-          )}
+          
         </div>
         <CommentText text={comment.text} />
       </div>

@@ -6,7 +6,7 @@ export const validateEmail = (email: string) => {
     if (emailRegex.test(email)) {
       return '';
     } else {
-      return "Invalid email format. Please use a valid email format like 'example@email.com'.";
+      return "Invalid email format. Please use a valid email format like 'example@gmail.com'.";
     }
   }
   

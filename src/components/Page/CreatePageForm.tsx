@@ -83,7 +83,7 @@ const CreatePageForm = () => {
           <p className={classes.error}>{descriptionError}</p>
         </div>
         <div >
-              <label htmlFor="gender">Gender</label>
+              <label htmlFor="gender">Category</label>
               <select
                 onChange={(event) => setCategory(event.target.value)}
                 placeholder="Choose your gender..."

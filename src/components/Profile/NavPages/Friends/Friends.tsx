@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import classes from "../../../../styles/Profile/NavPages/Friends/Friends.module.css";
+import classes from "../../../../styles/Profile/NavPages/Friends/AllUserFriends.module.css";
 import SearchUserResponse from "../../../../model/response/SearchFriendsResponse";
 import useHttp from "../../../../hooks/useHttp";
 import { useLoggedUserInformation } from "../../../../hooks/useLoggedUserInformation";
-import AllUserFriends from "./AllUserFriends";
 import { useParams } from "react-router-dom";
+import UserCart from "../../../Search/Users/UserCart";
 
 const Friends = () => {
   const [filteredFriends, setFilteredFriends] = useState<SearchUserResponse[]>(
@@ -36,8 +36,10 @@ const Friends = () => {
     );
   }, []);
   return (
-    <div className={classes.friendsContainer}>
-      <AllUserFriends users={filteredFriends} />
+    <div className={classes.allSearchedUsersContainier}>
+      {filteredFriends.map((user) => (
+        <UserCart user={user} key={user.id} />
+      ))}
     </div>
   );
 };

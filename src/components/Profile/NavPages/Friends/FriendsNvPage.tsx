@@ -1,4 +1,3 @@
-import Friends from "./Friends";
 import NavBar from "./NavBar/NavBar";
 import classes from '../../../../styles/Profile/NavPages/Friends/FriendsNavPage.module.css'
 import { Outlet } from "react-router-dom";

@@ -1,5 +1,4 @@
 import classes from "../../styles/Feed/CreatePost.module.css";
-import ProfileImg from "../../assets/BlankProfilePicture.png";
 import StyledButton from "../UI/StyledButton";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
@@ -10,7 +9,6 @@ import Post from "../../model/response/Post";
 import { useLoggedUserInformation } from "../../hooks/useLoggedUserInformation";
 import PagePost from "../../model/response/PagePostResponse";
 import BlankProfilePicture from "../../assets/BlankProfilePicture.png";
-import TagUserModal from "./TagUserModal";
 
 interface OpenDialogData {
   isOpen: boolean;

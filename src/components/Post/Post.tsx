@@ -19,6 +19,9 @@ const PostComponent: React.FC<PostProps> = ({ post, onDeletePost }) => {
   const [numberOfComments, setNumberOfComments] = useState(
     post.numberOfComments
   );
+  const [numberOfLikes, setNumberOfLikes] = useState(
+    post.numberOfLikes
+  );
 
   const addComment = (data: CommentResponse) => {
     setNumberOfComments((prevState) => prevState + 1);
@@ -42,7 +45,7 @@ const PostComponent: React.FC<PostProps> = ({ post, onDeletePost }) => {
         <PostActions
           postId={post.id}
           liked={post.liked}
-          numberOfLikes={post.numberOfLikes}
+          numberOfLikes={numberOfLikes}
           numberOfComments={numberOfComments}
           path="post"
         />

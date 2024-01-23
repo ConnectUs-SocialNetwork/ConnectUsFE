@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import SearchUserResponse from "../../../../model/response/SearchFriendsResponse";
 import useHttp from "../../../../hooks/useHttp";
 import { useLoggedUserInformation } from "../../../../hooks/useLoggedUserInformation";
-import AllUserFriends from "./AllUserFriends";
-import classes from "../../../../styles/Profile/NavPages/Friends/Friends.module.css";
+import classes from "../../../../styles/Profile/NavPages/Friends/AllUserFriends.module.css";
 import { useParams } from "react-router-dom";
+import UserCart from "../../../Search/Users/UserCart";
 
 const MutualFriends = () => {
   const params = useParams();
@@ -36,9 +36,11 @@ const MutualFriends = () => {
         );
       }, []);
       return (
-        <div className={classes.friendsContainer}>
-          <AllUserFriends users={filteredFriends} />
-        </div>
+        <div className={classes.allSearchedUsersContainier}>
+      {filteredFriends.map((user) => (
+        <UserCart user={user} key={user.id} />
+      ))}
+    </div>
       );
 }
 

@@ -190,7 +190,7 @@ const EditProfilePage = () => {
           </div>
           <div>
             <p className={classes.signup}>
-              Whant to change password?{" "}
+              Want to change password?{" "}
               <Link to="/auth?mode=login">Change password</Link>
             </p>
           </div>
